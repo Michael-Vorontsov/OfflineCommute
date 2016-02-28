@@ -1,0 +1,619 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D0C03DC21C81E59000EF9A95 /* OfflineCommuteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C03DC11C81E59000EF9A95 /* OfflineCommuteTests.swift */; };
+		D0C03DDF1C81E62100EF9A95 /* OfflineCommute.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0C03DCE1C81E62100EF9A95 /* OfflineCommute.xcdatamodeld */; };
+		D0C03DE01C81E62100EF9A95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0C03DD11C81E62100EF9A95 /* Assets.xcassets */; };
+		D0C03DE21C81E62100EF9A95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0C03DD51C81E62100EF9A95 /* LaunchScreen.storyboard */; };
+		D0C03DE31C81E62100EF9A95 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0C03DD61C81E62100EF9A95 /* Main.storyboard */; };
+		D0C03DE41C81E62100EF9A95 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C03DDA1C81E62100EF9A95 /* AppDelegate.swift */; };
+		D0C03DE51C81E62100EF9A95 /* StationsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C03DDE1C81E62100EF9A95 /* StationsListViewController.swift */; };
+		D0C03DE71C81E67C00EF9A95 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D0C03DE61C81E67C00EF9A95 /* Localizable.strings */; };
+		D0C03DEB1C81E7F800EF9A95 /* DockStation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C03DE91C81E7F800EF9A95 /* DockStation+CoreDataProperties.swift */; };
+		D0C03DEC1C81E7F800EF9A95 /* DockStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C03DEA1C81E7F800EF9A95 /* DockStation.swift */; };
+		D0C03DF51C81E9D400EF9A95 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C03DEF1C81E9D400EF9A95 /* CoreDataManager.swift */; };
+		D0C03DF61C81E9D400EF9A95 /* SyncOperationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C03DF01C81E9D400EF9A95 /* SyncOperationManager.swift */; };
+		D0C03DF71C81E9D400EF9A95 /* BasicSyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C03DF21C81E9D400EF9A95 /* BasicSyncOperation.swift */; };
+		D0C03DF81C81E9D400EF9A95 /* GeocodingSyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C03DF31C81E9D400EF9A95 /* GeocodingSyncOperation.swift */; };
+		D0C03DF91C81E9D400EF9A95 /* PostSyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C03DF41C81E9D400EF9A95 /* PostSyncOperation.swift */; };
+		D0C03DFF1C81E9EE00EF9A95 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C03DFC1C81E9EE00EF9A95 /* KeychainWrapper.swift */; };
+		D0C03E001C81E9EE00EF9A95 /* LocalizationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C03DFE1C81E9EE00EF9A95 /* LocalizationExtensions.swift */; };
+		D0C03E031C81EA6200EF9A95 /* LocalizableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C03E021C81EA6200EF9A95 /* LocalizableViewController.swift */; };
+		D0C03E051C81EE8300EF9A95 /* DockStationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C03E041C81EE8300EF9A95 /* DockStationCell.swift */; };
+		D0C03E071C81F05800EF9A95 /* DockStationsSyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C03E061C81F05800EF9A95 /* DockStationsSyncOperation.swift */; };
+		D0C03E091C81F0B500EF9A95 /* ManagedObjectSyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C03E081C81F0B500EF9A95 /* ManagedObjectSyncOperation.swift */; };
+		D0C03E0C1C82021F00EF9A95 /* NSFileManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C03E0A1C82021F00EF9A95 /* NSFileManager+Extension.swift */; };
+		D0C03E0D1C82021F00EF9A95 /* NSManagedObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C03E0B1C82021F00EF9A95 /* NSManagedObject+Extension.swift */; };
+		D0C03E0F1C825A1800EF9A95 /* UpdateDistanceSyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C03E0E1C825A1800EF9A95 /* UpdateDistanceSyncOperation.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D0C03DBE1C81E59000EF9A95 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D0C03D9E1C81E58F00EF9A95 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D0C03DA51C81E58F00EF9A95;
+			remoteInfo = OfflineCommute;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D0C03DA61C81E58F00EF9A95 /* OfflineCommute.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OfflineCommute.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0C03DBD1C81E59000EF9A95 /* OfflineCommuteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OfflineCommuteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0C03DC11C81E59000EF9A95 /* OfflineCommuteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineCommuteTests.swift; sourceTree = "<group>"; };
+		D0C03DC31C81E59000EF9A95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D0C03DCF1C81E62100EF9A95 /* OfflineCommute.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OfflineCommute.xcdatamodel; sourceTree = "<group>"; };
+		D0C03DD11C81E62100EF9A95 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D0C03DD31C81E62100EF9A95 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D0C03DD51C81E62100EF9A95 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D0C03DD61C81E62100EF9A95 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		D0C03DDA1C81E62100EF9A95 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D0C03DDE1C81E62100EF9A95 /* StationsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StationsListViewController.swift; path = OfflineCommute/Sources/UI/Scenes/StationsListViewController.swift; sourceTree = SOURCE_ROOT; };
+		D0C03DE61C81E67C00EF9A95 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		D0C03DE91C81E7F800EF9A95 /* DockStation+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DockStation+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D0C03DEA1C81E7F800EF9A95 /* DockStation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DockStation.swift; sourceTree = "<group>"; };
+		D0C03DEF1C81E9D400EF9A95 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		D0C03DF01C81E9D400EF9A95 /* SyncOperationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncOperationManager.swift; sourceTree = "<group>"; };
+		D0C03DF21C81E9D400EF9A95 /* BasicSyncOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicSyncOperation.swift; sourceTree = "<group>"; };
+		D0C03DF31C81E9D400EF9A95 /* GeocodingSyncOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeocodingSyncOperation.swift; sourceTree = "<group>"; };
+		D0C03DF41C81E9D400EF9A95 /* PostSyncOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostSyncOperation.swift; sourceTree = "<group>"; };
+		D0C03DFC1C81E9EE00EF9A95 /* KeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
+		D0C03DFE1C81E9EE00EF9A95 /* LocalizationExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizationExtensions.swift; sourceTree = "<group>"; };
+		D0C03E021C81EA6200EF9A95 /* LocalizableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizableViewController.swift; sourceTree = "<group>"; };
+		D0C03E041C81EE8300EF9A95 /* DockStationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DockStationCell.swift; sourceTree = "<group>"; };
+		D0C03E061C81F05800EF9A95 /* DockStationsSyncOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DockStationsSyncOperation.swift; sourceTree = "<group>"; };
+		D0C03E081C81F0B500EF9A95 /* ManagedObjectSyncOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectSyncOperation.swift; sourceTree = "<group>"; };
+		D0C03E0A1C82021F00EF9A95 /* NSFileManager+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSFileManager+Extension.swift"; sourceTree = "<group>"; };
+		D0C03E0B1C82021F00EF9A95 /* NSManagedObject+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+Extension.swift"; sourceTree = "<group>"; };
+		D0C03E0E1C825A1800EF9A95 /* UpdateDistanceSyncOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateDistanceSyncOperation.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D0C03DA31C81E58F00EF9A95 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0C03DBA1C81E59000EF9A95 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D0C03D9D1C81E58F00EF9A95 = {
+			isa = PBXGroup;
+			children = (
+				D0C03DA81C81E58F00EF9A95 /* OfflineCommute */,
+				D0C03DC01C81E59000EF9A95 /* OfflineCommuteTests */,
+				D0C03DA71C81E58F00EF9A95 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D0C03DA71C81E58F00EF9A95 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D0C03DA61C81E58F00EF9A95 /* OfflineCommute.app */,
+				D0C03DBD1C81E59000EF9A95 /* OfflineCommuteTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D0C03DA81C81E58F00EF9A95 /* OfflineCommute */ = {
+			isa = PBXGroup;
+			children = (
+				D0C03DCC1C81E62100EF9A95 /* Resources */,
+				D0C03DD81C81E62100EF9A95 /* Sources */,
+			);
+			path = OfflineCommute;
+			sourceTree = "<group>";
+		};
+		D0C03DC01C81E59000EF9A95 /* OfflineCommuteTests */ = {
+			isa = PBXGroup;
+			children = (
+				D0C03DC11C81E59000EF9A95 /* OfflineCommuteTests.swift */,
+				D0C03DC31C81E59000EF9A95 /* Info.plist */,
+			);
+			path = OfflineCommuteTests;
+			sourceTree = "<group>";
+		};
+		D0C03DCC1C81E62100EF9A95 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D0C03DCD1C81E62100EF9A95 /* DataModel */,
+				D0C03DD01C81E62100EF9A95 /* Images */,
+				D0C03DD21C81E62100EF9A95 /* Plists */,
+				D0C03DD41C81E62100EF9A95 /* Storyboards */,
+				D0C03DD71C81E62100EF9A95 /* Strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D0C03DCD1C81E62100EF9A95 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				D0C03DCE1C81E62100EF9A95 /* OfflineCommute.xcdatamodeld */,
+			);
+			path = DataModel;
+			sourceTree = "<group>";
+		};
+		D0C03DD01C81E62100EF9A95 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				D0C03DD11C81E62100EF9A95 /* Assets.xcassets */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		D0C03DD21C81E62100EF9A95 /* Plists */ = {
+			isa = PBXGroup;
+			children = (
+				D0C03DD31C81E62100EF9A95 /* Info.plist */,
+			);
+			path = Plists;
+			sourceTree = "<group>";
+		};
+		D0C03DD41C81E62100EF9A95 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				D0C03DD51C81E62100EF9A95 /* LaunchScreen.storyboard */,
+				D0C03DD61C81E62100EF9A95 /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		D0C03DD71C81E62100EF9A95 /* Strings */ = {
+			isa = PBXGroup;
+			children = (
+				D0C03DE61C81E67C00EF9A95 /* Localizable.strings */,
+			);
+			path = Strings;
+			sourceTree = "<group>";
+		};
+		D0C03DD81C81E62100EF9A95 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				D0C03DD91C81E62100EF9A95 /* Controllers */,
+				D0C03DDB1C81E62100EF9A95 /* Model */,
+				D0C03DDC1C81E62100EF9A95 /* UI */,
+				D0C03DFA1C81E9EE00EF9A95 /* Support */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		D0C03DD91C81E62100EF9A95 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D0C03DF11C81E9D400EF9A95 /* SyncOperations */,
+				D0C03DEE1C81E89800EF9A95 /* DataSources */,
+				D0C03DEF1C81E9D400EF9A95 /* CoreDataManager.swift */,
+				D0C03DF01C81E9D400EF9A95 /* SyncOperationManager.swift */,
+				D0C03DDA1C81E62100EF9A95 /* AppDelegate.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		D0C03DDB1C81E62100EF9A95 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D0C03DE81C81E7D600EF9A95 /* ManagedObjects */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D0C03DDC1C81E62100EF9A95 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				D0C03E021C81EA6200EF9A95 /* LocalizableViewController.swift */,
+				D0C03E011C81EA2800EF9A95 /* General */,
+				D0C03DDD1C81E62100EF9A95 /* Scenes */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		D0C03DDD1C81E62100EF9A95 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				D0C03DED1C81E85D00EF9A95 /* StationsList */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		D0C03DE81C81E7D600EF9A95 /* ManagedObjects */ = {
+			isa = PBXGroup;
+			children = (
+				D0C03DE91C81E7F800EF9A95 /* DockStation+CoreDataProperties.swift */,
+				D0C03DEA1C81E7F800EF9A95 /* DockStation.swift */,
+			);
+			path = ManagedObjects;
+			sourceTree = "<group>";
+		};
+		D0C03DED1C81E85D00EF9A95 /* StationsList */ = {
+			isa = PBXGroup;
+			children = (
+				D0C03DDE1C81E62100EF9A95 /* StationsListViewController.swift */,
+				D0C03E041C81EE8300EF9A95 /* DockStationCell.swift */,
+			);
+			path = StationsList;
+			sourceTree = "<group>";
+		};
+		D0C03DEE1C81E89800EF9A95 /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DataSources;
+			sourceTree = "<group>";
+		};
+		D0C03DF11C81E9D400EF9A95 /* SyncOperations */ = {
+			isa = PBXGroup;
+			children = (
+				D0C03E081C81F0B500EF9A95 /* ManagedObjectSyncOperation.swift */,
+				D0C03DF21C81E9D400EF9A95 /* BasicSyncOperation.swift */,
+				D0C03DF31C81E9D400EF9A95 /* GeocodingSyncOperation.swift */,
+				D0C03DF41C81E9D400EF9A95 /* PostSyncOperation.swift */,
+				D0C03E061C81F05800EF9A95 /* DockStationsSyncOperation.swift */,
+				D0C03E0E1C825A1800EF9A95 /* UpdateDistanceSyncOperation.swift */,
+			);
+			path = SyncOperations;
+			sourceTree = "<group>";
+		};
+		D0C03DFA1C81E9EE00EF9A95 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				D0C03DFB1C81E9EE00EF9A95 /* Extensions */,
+				D0C03DFC1C81E9EE00EF9A95 /* KeychainWrapper.swift */,
+				D0C03DFD1C81E9EE00EF9A95 /* Protocols */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		D0C03DFB1C81E9EE00EF9A95 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D0C03E0A1C82021F00EF9A95 /* NSFileManager+Extension.swift */,
+				D0C03E0B1C82021F00EF9A95 /* NSManagedObject+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D0C03DFD1C81E9EE00EF9A95 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				D0C03DFE1C81E9EE00EF9A95 /* LocalizationExtensions.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		D0C03E011C81EA2800EF9A95 /* General */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = General;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D0C03DA51C81E58F00EF9A95 /* OfflineCommute */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D0C03DC61C81E59000EF9A95 /* Build configuration list for PBXNativeTarget "OfflineCommute" */;
+			buildPhases = (
+				D0C03DA21C81E58F00EF9A95 /* Sources */,
+				D0C03DA31C81E58F00EF9A95 /* Frameworks */,
+				D0C03DA41C81E58F00EF9A95 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OfflineCommute;
+			productName = OfflineCommute;
+			productReference = D0C03DA61C81E58F00EF9A95 /* OfflineCommute.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D0C03DBC1C81E59000EF9A95 /* OfflineCommuteTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D0C03DC91C81E59000EF9A95 /* Build configuration list for PBXNativeTarget "OfflineCommuteTests" */;
+			buildPhases = (
+				D0C03DB91C81E59000EF9A95 /* Sources */,
+				D0C03DBA1C81E59000EF9A95 /* Frameworks */,
+				D0C03DBB1C81E59000EF9A95 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D0C03DBF1C81E59000EF9A95 /* PBXTargetDependency */,
+			);
+			name = OfflineCommuteTests;
+			productName = OfflineCommuteTests;
+			productReference = D0C03DBD1C81E59000EF9A95 /* OfflineCommuteTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D0C03D9E1C81E58F00EF9A95 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Mykhailo Vorontsov";
+				TargetAttributes = {
+					D0C03DA51C81E58F00EF9A95 = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+					D0C03DBC1C81E59000EF9A95 = {
+						CreatedOnToolsVersion = 7.2.1;
+						TestTargetID = D0C03DA51C81E58F00EF9A95;
+					};
+				};
+			};
+			buildConfigurationList = D0C03DA11C81E58F00EF9A95 /* Build configuration list for PBXProject "OfflineCommute" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D0C03D9D1C81E58F00EF9A95;
+			productRefGroup = D0C03DA71C81E58F00EF9A95 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D0C03DA51C81E58F00EF9A95 /* OfflineCommute */,
+				D0C03DBC1C81E59000EF9A95 /* OfflineCommuteTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D0C03DA41C81E58F00EF9A95 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0C03DE71C81E67C00EF9A95 /* Localizable.strings in Resources */,
+				D0C03DE21C81E62100EF9A95 /* LaunchScreen.storyboard in Resources */,
+				D0C03DE01C81E62100EF9A95 /* Assets.xcassets in Resources */,
+				D0C03DE31C81E62100EF9A95 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0C03DBB1C81E59000EF9A95 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D0C03DA21C81E58F00EF9A95 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0C03DF91C81E9D400EF9A95 /* PostSyncOperation.swift in Sources */,
+				D0C03DF61C81E9D400EF9A95 /* SyncOperationManager.swift in Sources */,
+				D0C03DF51C81E9D400EF9A95 /* CoreDataManager.swift in Sources */,
+				D0C03DFF1C81E9EE00EF9A95 /* KeychainWrapper.swift in Sources */,
+				D0C03E001C81E9EE00EF9A95 /* LocalizationExtensions.swift in Sources */,
+				D0C03DE51C81E62100EF9A95 /* StationsListViewController.swift in Sources */,
+				D0C03E051C81EE8300EF9A95 /* DockStationCell.swift in Sources */,
+				D0C03E031C81EA6200EF9A95 /* LocalizableViewController.swift in Sources */,
+				D0C03DF71C81E9D400EF9A95 /* BasicSyncOperation.swift in Sources */,
+				D0C03E0D1C82021F00EF9A95 /* NSManagedObject+Extension.swift in Sources */,
+				D0C03E0F1C825A1800EF9A95 /* UpdateDistanceSyncOperation.swift in Sources */,
+				D0C03DEB1C81E7F800EF9A95 /* DockStation+CoreDataProperties.swift in Sources */,
+				D0C03E0C1C82021F00EF9A95 /* NSFileManager+Extension.swift in Sources */,
+				D0C03E091C81F0B500EF9A95 /* ManagedObjectSyncOperation.swift in Sources */,
+				D0C03E071C81F05800EF9A95 /* DockStationsSyncOperation.swift in Sources */,
+				D0C03DE41C81E62100EF9A95 /* AppDelegate.swift in Sources */,
+				D0C03DDF1C81E62100EF9A95 /* OfflineCommute.xcdatamodeld in Sources */,
+				D0C03DEC1C81E7F800EF9A95 /* DockStation.swift in Sources */,
+				D0C03DF81C81E9D400EF9A95 /* GeocodingSyncOperation.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0C03DB91C81E59000EF9A95 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0C03DC21C81E59000EF9A95 /* OfflineCommuteTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D0C03DBF1C81E59000EF9A95 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D0C03DA51C81E58F00EF9A95 /* OfflineCommute */;
+			targetProxy = D0C03DBE1C81E59000EF9A95 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		D0C03DC41C81E59000EF9A95 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D0C03DC51C81E59000EF9A95 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D0C03DC71C81E59000EF9A95 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "$(SRCROOT)/OfflineCommute/Resources/Plists/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mvorontsov.OfflineCommute;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		D0C03DC81C81E59000EF9A95 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "$(SRCROOT)/OfflineCommute/Resources/Plists/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mvorontsov.OfflineCommute;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		D0C03DCA1C81E59000EF9A95 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = OfflineCommuteTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mvorontsov.OfflineCommuteTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OfflineCommute.app/OfflineCommute";
+			};
+			name = Debug;
+		};
+		D0C03DCB1C81E59000EF9A95 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = OfflineCommuteTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mvorontsov.OfflineCommuteTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OfflineCommute.app/OfflineCommute";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D0C03DA11C81E58F00EF9A95 /* Build configuration list for PBXProject "OfflineCommute" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D0C03DC41C81E59000EF9A95 /* Debug */,
+				D0C03DC51C81E59000EF9A95 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D0C03DC61C81E59000EF9A95 /* Build configuration list for PBXNativeTarget "OfflineCommute" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D0C03DC71C81E59000EF9A95 /* Debug */,
+				D0C03DC81C81E59000EF9A95 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		D0C03DC91C81E59000EF9A95 /* Build configuration list for PBXNativeTarget "OfflineCommuteTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D0C03DCA1C81E59000EF9A95 /* Debug */,
+				D0C03DCB1C81E59000EF9A95 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D0C03DCE1C81E62100EF9A95 /* OfflineCommute.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D0C03DCF1C81E62100EF9A95 /* OfflineCommute.xcdatamodel */,
+			);
+			currentVersion = D0C03DCF1C81E62100EF9A95 /* OfflineCommute.xcdatamodel */;
+			path = OfflineCommute.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = D0C03D9E1C81E58F00EF9A95 /* Project object */;
+}
