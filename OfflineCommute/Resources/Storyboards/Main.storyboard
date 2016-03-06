@@ -197,11 +197,11 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="ZDu-td-FJS"/>
+                                <exclude reference="obo-xm-0bu"/>
                                 <exclude reference="0N5-U5-J6j"/>
                                 <exclude reference="F0P-JL-Cl6"/>
                                 <exclude reference="h93-EL-ar6"/>
                                 <exclude reference="uYc-tm-laS"/>
-                                <exclude reference="obo-xm-0bu"/>
                                 <exclude reference="36a-Ve-Zwb"/>
                                 <exclude reference="ubQ-PE-dul"/>
                             </mask>

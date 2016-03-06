@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C7E9DE3C9851CBFC76CBFAC /* Pods_OfflineCommute.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8604B4E3CB739DE246A3349E /* Pods_OfflineCommute.framework */; };
 		D0C03DC21C81E59000EF9A95 /* OfflineCommuteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C03DC11C81E59000EF9A95 /* OfflineCommuteTests.swift */; };
 		D0C03DDF1C81E62100EF9A95 /* OfflineCommute.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0C03DCE1C81E62100EF9A95 /* OfflineCommute.xcdatamodeld */; };
 		D0C03DE01C81E62100EF9A95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0C03DD11C81E62100EF9A95 /* Assets.xcassets */; };
@@ -44,6 +45,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E6C959A2CCB11AC82EB09B6 /* Pods-OfflineCommute.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OfflineCommute.release.xcconfig"; path = "Pods/Target Support Files/Pods-OfflineCommute/Pods-OfflineCommute.release.xcconfig"; sourceTree = "<group>"; };
+		8604B4E3CB739DE246A3349E /* Pods_OfflineCommute.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OfflineCommute.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A735EC79848B1F82B338A253 /* Pods-OfflineCommute.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OfflineCommute.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OfflineCommute/Pods-OfflineCommute.debug.xcconfig"; sourceTree = "<group>"; };
 		D0C03DA61C81E58F00EF9A95 /* OfflineCommute.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OfflineCommute.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0C03DBD1C81E59000EF9A95 /* OfflineCommuteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OfflineCommuteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0C03DC11C81E59000EF9A95 /* OfflineCommuteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineCommuteTests.swift; sourceTree = "<group>"; };
@@ -79,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C7E9DE3C9851CBFC76CBFAC /* Pods_OfflineCommute.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,12 +97,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AE8178F0245242E9739CAAB8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8604B4E3CB739DE246A3349E /* Pods_OfflineCommute.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B80CF39E4A1F9DB7FE7554AF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A735EC79848B1F82B338A253 /* Pods-OfflineCommute.debug.xcconfig */,
+				0E6C959A2CCB11AC82EB09B6 /* Pods-OfflineCommute.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		D0C03D9D1C81E58F00EF9A95 = {
 			isa = PBXGroup;
 			children = (
 				D0C03DA81C81E58F00EF9A95 /* OfflineCommute */,
 				D0C03DC01C81E59000EF9A95 /* OfflineCommuteTests */,
 				D0C03DA71C81E58F00EF9A95 /* Products */,
+				B80CF39E4A1F9DB7FE7554AF /* Pods */,
+				AE8178F0245242E9739CAAB8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -309,9 +333,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D0C03DC61C81E59000EF9A95 /* Build configuration list for PBXNativeTarget "OfflineCommute" */;
 			buildPhases = (
+				4E70001118E93EE5B63BDA50 /* Check Pods Manifest.lock */,
 				D0C03DA21C81E58F00EF9A95 /* Sources */,
 				D0C03DA31C81E58F00EF9A95 /* Frameworks */,
 				D0C03DA41C81E58F00EF9A95 /* Resources */,
+				E57CBB70A798AA12248EC793 /* Embed Pods Frameworks */,
+				BD428C723BA599FBACF493A7 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -398,6 +425,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4E70001118E93EE5B63BDA50 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		BD428C723BA599FBACF493A7 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OfflineCommute/Pods-OfflineCommute-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E57CBB70A798AA12248EC793 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OfflineCommute/Pods-OfflineCommute-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D0C03DA21C81E58F00EF9A95 /* Sources */ = {
@@ -528,6 +603,7 @@
 		};
 		D0C03DC71C81E59000EF9A95 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A735EC79848B1F82B338A253 /* Pods-OfflineCommute.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "$(SRCROOT)/OfflineCommute/Resources/Plists/Info.plist";
@@ -539,6 +615,7 @@
 		};
 		D0C03DC81C81E59000EF9A95 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E6C959A2CCB11AC82EB09B6 /* Pods-OfflineCommute.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "$(SRCROOT)/OfflineCommute/Resources/Plists/Info.plist";
@@ -591,6 +668,7 @@
 				D0C03DC81C81E59000EF9A95 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D0C03DC91C81E59000EF9A95 /* Build configuration list for PBXNativeTarget "OfflineCommuteTests" */ = {
 			isa = XCConfigurationList;
@@ -599,6 +677,7 @@
 				D0C03DCB1C81E59000EF9A95 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
