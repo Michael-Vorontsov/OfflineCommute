@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import MapKit
+import Mapbox
 
 private struct Constants {
   static let CellReuseID = "Cell"
@@ -17,7 +18,8 @@ private struct Constants {
 }
 
 //extension MKAnnotation where Self:DockStation {
-extension DockStation:MKAnnotation {
+//extension MGLAnnotation where Self:DockStation {
+extension DockStation: MGLAnnotation {
   var coordinate: CLLocationCoordinate2D {
     get {
       return CLLocationCoordinate2DMake(latitude.doubleValue, longitude.doubleValue)
@@ -34,26 +36,32 @@ extension DockStation:MKAnnotation {
   
 }
 
-class StationsListViewController: LocalizableViewController, NSFetchedResultsControllerDelegate, UITableViewDataSource, UITabBarDelegate, MKMapViewDelegate {
+class StationsListViewController: LocalizableViewController, NSFetchedResultsControllerDelegate, UITableViewDataSource, UITabBarDelegate {
 
+  @IBOutlet weak var mapViewContainer: UIView!
   @IBOutlet weak var tableView: UITableView! {
     didSet {
       tableView.tableFooterView = UIView()
     }
   }
   
-  @IBOutlet weak var mapView: MKMapView!
+  lazy var mapView:MGLMapView = {
+    let mapView = MGLMapView(frame: self.mapViewContainer.bounds)
+    mapView.autoresizingMask = [.FlexibleHeight, .FlexibleWidth]
+    return mapView
+    
+  }()
   
   lazy var locationManager = {
     return CLLocationManager()
   }()
 
   lazy var dataManager:CoreDataManager = {
-    return CoreDataManager.sharedManager
+    return AppDelegate.sharedInstance.coreDataManager
   }()
   
-  lazy var syncManager:SyncOperationManager = {
-    return SyncOperationManager.sharedManager
+  lazy var syncManager:DataRetrievalOperationManager = {
+    return AppDelegate.sharedInstance.dataOperationManager
   }()
   
   lazy var dateFormatter:NSDateFormatter = {
@@ -67,7 +75,7 @@ class StationsListViewController: LocalizableViewController, NSFetchedResultsCon
 //    return calendar
   }()
   
-  var currentLocationAnnotation:MKPointAnnotation?
+  var currentLocationAnnotation:MGLAnnotation?
   
   lazy var resultsController:NSFetchedResultsController = {
     let fetchRequest = NSFetchRequest(entityName: "DockStation")
@@ -76,8 +84,7 @@ class StationsListViewController: LocalizableViewController, NSFetchedResultsCon
     
 //    fetchRequest.predicate = NSPredicate(format: "distance < 1000", argumentArray: nil)
     
-//    let context:NSManagedObjectContext = dataManager.context
-    let context:NSManagedObjectContext = CoreDataManager.sharedManager.mainContext
+    let context:NSManagedObjectContext = self.dataManager.dataContext
     
     let controller:NSFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
 
@@ -100,14 +107,18 @@ extension StationsListViewController {
 
     
     super.viewDidLoad()
+    
+    mapViewContainer.addSubview(mapView)
+    
+    
   }
   
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
     
-    mapView.showsUserLocation = true
-    mapView.setUserTrackingMode(.FollowWithHeading, animated: true)
-
+//    mapView.showsUserLocation = true
+//    mapView.setUserTrackingMode(.FollowWithHeading, animated: true)
+    
   }
   
   override func viewDidAppear(animated: Bool) {
@@ -116,7 +127,7 @@ extension StationsListViewController {
 //    locationManager = manager
     locationManager.requestWhenInUseAuthorization()
 
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(5.0 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) { () -> Void in
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(0.2 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) { () -> Void in
       self.refresh()
     }
   }
@@ -126,10 +137,10 @@ extension StationsListViewController {
 extension StationsListViewController {
   
   @IBAction func refresh() {
-    let netOperation = DockStationsSyncOperation(dataManager: dataManager)
-    let distanceOpeartion = UpdateDistanceSyncOperation(dataManager: dataManager, center: mapView.userLocation.coordinate)
+    let netOperation = DockStationsSyncOperation()
+    let distanceOpeartion = UpdateDistanceSyncOperation(center: CLLocationCoordinate2DMake( 51.5085300, -0.1257400))
+
     distanceOpeartion.addDependency(netOperation)
-    
     syncManager.addOperations([netOperation, distanceOpeartion]) { (success, results, error) -> Void in
     }
   }
@@ -250,33 +261,33 @@ extension StationsListViewController {
 
 // MARK: - MKMapViewDelegate
 extension StationsListViewController {
-  func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
-    guard let annotation = annotation as? DockStation else {
-      return nil
-    }
-    let view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: Constants.pinViewReuseID)
-    
-    view.canShowCallout = true
-
-    let bikesCount = annotation.bikesAvailable?.integerValue ?? 0
-    let dockCount = annotation.vacantPlaces?.integerValue ?? 0
-
-    if bikesCount < 1 && dockCount < 1 {
-      view.pinTintColor = UIColor.lightGrayColor()
-    } else if bikesCount < 1 {
-      view.pinTintColor = UIColor.yellowColor()
-    } else if dockCount < 1 {
-      view.pinTintColor = UIColor.blueColor()
-    } else {
-      view.pinTintColor = UIColor.greenColor()
-    }
-    
-    return view
-  }
+//  func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+//    guard let annotation = annotation as? DockStation else {
+//      return nil
+//    }
+//    let view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: Constants.pinViewReuseID)
+//    
+//    view.canShowCallout = true
+//
+//    let bikesCount = annotation.bikesAvailable?.integerValue ?? 0
+//    let dockCount = annotation.vacantPlaces?.integerValue ?? 0
+//
+//    if bikesCount < 1 && dockCount < 1 {
+//      view.pinTintColor = UIColor.lightGrayColor()
+//    } else if bikesCount < 1 {
+//      view.pinTintColor = UIColor.yellowColor()
+//    } else if dockCount < 1 {
+//      view.pinTintColor = UIColor.blueColor()
+//    } else {
+//      view.pinTintColor = UIColor.greenColor()
+//    }
+//    
+//    return view
+//  }
   
-  func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
-    
-  }
+//  func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
+//    
+//  }
   
 }
 
@@ -321,7 +332,7 @@ extension StationsListViewController:UISearchBarDelegate {
       
       guardSelf.mapView.setUserTrackingMode(.None, animated: false)
       
-      let annotation = MKPointAnnotation()
+      let annotation = MGLPointAnnotation()
       annotation.coordinate = coordinate
       
       if nil != guardSelf.currentLocationAnnotation {
@@ -332,7 +343,7 @@ extension StationsListViewController:UISearchBarDelegate {
       guardSelf.currentLocationAnnotation = annotation
       
       guardSelf.mapView.showAnnotations([annotation], animated: true)
-      let distanceOpeartion = UpdateDistanceSyncOperation(dataManager: guardSelf.dataManager, center: guardSelf.currentLocationAnnotation!.coordinate)
+      let distanceOpeartion = UpdateDistanceSyncOperation(center: guardSelf.currentLocationAnnotation!.coordinate)
       guardSelf.syncManager.addOperations([distanceOpeartion], completionBLock: { (success, results, error) -> Void in
         
       })

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -18,12 +18,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Xfe-5x-H1W">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OLu-bc-dZi">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
-                                <connections>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="alD-4f-2ot"/>
-                                </connections>
-                            </mapView>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iLI-Xo-OT7">
                                 <rect key="frame" x="0.0" y="551" width="600" height="49"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -170,29 +168,28 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Jpc-d5-ryh" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="0N5-U5-J6j"/>
+                            <constraint firstItem="OLu-bc-dZi" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="1PG-Nw-dkt"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Jpc-d5-ryh" secondAttribute="bottom" id="36a-Ve-Zwb"/>
-                            <constraint firstItem="Xfe-5x-H1W" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="6eb-RW-VYl"/>
+                            <constraint firstItem="OLu-bc-dZi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="5Xt-uo-I2Z"/>
                             <constraint firstAttribute="trailing" secondItem="Jpc-d5-ryh" secondAttribute="trailing" constant="20" id="8Uv-ah-Khp"/>
                             <constraint firstItem="iLI-Xo-OT7" firstAttribute="top" secondItem="Jpc-d5-ryh" secondAttribute="bottom" constant="8" id="AOH-of-SwN"/>
-                            <constraint firstAttribute="trailing" secondItem="Xfe-5x-H1W" secondAttribute="trailing" id="Aio-3b-SND"/>
                             <constraint firstItem="YUi-g6-32H" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" id="DMQ-eF-AqG"/>
                             <constraint firstItem="Jpc-d5-ryh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="F0P-JL-Cl6"/>
                             <constraint firstItem="iLI-Xo-OT7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="GZV-jY-cbc"/>
+                            <constraint firstAttribute="trailing" secondItem="OLu-bc-dZi" secondAttribute="trailing" id="JF4-fV-lfE"/>
                             <constraint firstItem="b6f-Xe-3bk" firstAttribute="leading" secondItem="Jpc-d5-ryh" secondAttribute="leading" id="Neh-yn-Nl2"/>
                             <constraint firstItem="Jpc-d5-ryh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="R4d-g5-8TX"/>
                             <constraint firstItem="Jpc-d5-ryh" firstAttribute="top" secondItem="YUi-g6-32H" secondAttribute="bottom" constant="8" id="Tkv-Rx-l1f"/>
+                            <constraint firstItem="iLI-Xo-OT7" firstAttribute="top" secondItem="OLu-bc-dZi" secondAttribute="bottom" id="UXB-H0-lzA"/>
                             <constraint firstAttribute="trailing" secondItem="YUi-g6-32H" secondAttribute="trailing" constant="20" id="XKQ-bL-coI"/>
                             <constraint firstAttribute="trailing" secondItem="iLI-Xo-OT7" secondAttribute="trailing" id="Z2h-Ew-6Rw"/>
                             <constraint firstItem="b6f-Xe-3bk" firstAttribute="baseline" secondItem="YUi-g6-32H" secondAttribute="baseline" id="ZDu-td-FJS"/>
-                            <constraint firstItem="Xfe-5x-H1W" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ZIf-Ky-sY0"/>
-                            <constraint firstItem="iLI-Xo-OT7" firstAttribute="top" secondItem="Xfe-5x-H1W" secondAttribute="bottom" id="eDy-4W-BDg"/>
                             <constraint firstItem="YUi-g6-32H" firstAttribute="leading" secondItem="b6f-Xe-3bk" secondAttribute="trailing" constant="8" id="gfh-WM-DoK"/>
                             <constraint firstItem="Jpc-d5-ryh" firstAttribute="top" secondItem="YUi-g6-32H" secondAttribute="bottom" id="h93-EL-ar6"/>
                             <constraint firstItem="b6f-Xe-3bk" firstAttribute="top" secondItem="YUi-g6-32H" secondAttribute="top" id="kGr-y0-vFE"/>
                             <constraint firstItem="YUi-g6-32H" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="obo-xm-0bu"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="iLI-Xo-OT7" secondAttribute="bottom" id="u92-Qf-7ac"/>
                             <constraint firstAttribute="trailing" secondItem="Jpc-d5-ryh" secondAttribute="trailing" id="uYc-tm-laS"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Xfe-5x-H1W" secondAttribute="bottom" id="ubQ-PE-dul"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -203,13 +200,12 @@
                                 <exclude reference="h93-EL-ar6"/>
                                 <exclude reference="uYc-tm-laS"/>
                                 <exclude reference="36a-Ve-Zwb"/>
-                                <exclude reference="ubQ-PE-dul"/>
                             </mask>
                         </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="KI1-mz-qJ4"/>
                     <connections>
-                        <outlet property="mapView" destination="Xfe-5x-H1W" id="jwH-Af-ys8"/>
+                        <outlet property="mapViewContainer" destination="OLu-bc-dZi" id="giR-1o-OSU"/>
                         <outlet property="tableView" destination="Jpc-d5-ryh" id="aHA-lm-cih"/>
                     </connections>
                 </viewController>

@@ -10,24 +10,25 @@ import UIKit
 import MapKit
 import CoreData
 
-class UpdateDistanceSyncOperation: BasicSyncOperation {
+class UpdateDistanceSyncOperation: DataRetrievalOperation, ManagedObjectRetrievalOperationProtocol {
   
   let center:CLLocationCoordinate2D
-  let dataManager: CoreDataManager
   
-  init(dataManager: CoreDataManager, center:CLLocationCoordinate2D) {
-    self.dataManager = dataManager
+  var dataManager: CoreDataManager!
+  
+  init(center:CLLocationCoordinate2D) {
     self.center = center
     super.init()
   }
   
-  override func main() {
+  //  override func main() {
+  override func parseData() throws {
+    var internalError:ErrorType? = nil
     let context = dataManager.dataContext
     context.performBlockAndWait { () -> Void in
       // Clear old data
       do {
         guard let allDocks = try context.executeFetchRequest(NSFetchRequest(entityName: "DockStation")) as? [DockStation] else {
-          self.breakWithError(NSError(domain: "CoreData", code: 1, userInfo: nil))
           return
         }
         
@@ -40,10 +41,15 @@ class UpdateDistanceSyncOperation: BasicSyncOperation {
           
           dock.distance = distance
         }
-        self.dataManager.saveContext(context)
+        try context.save()
         
       } catch {
+        internalError = error
       }
+    }
+    
+    guard nil == internalError else {
+      throw internalError!
     }
     
     

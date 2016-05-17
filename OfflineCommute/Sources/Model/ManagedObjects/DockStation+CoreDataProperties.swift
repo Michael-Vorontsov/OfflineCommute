@@ -18,7 +18,7 @@ extension DockStation {
     @NSManaged var address: String?
     @NSManaged var longitude: NSNumber!
     @NSManaged var latitude: NSNumber!
-    @NSManaged var title: String!
+    @NSManaged var title: String?
     @NSManaged var active: NSNumber?
     @NSManaged var totalPlaces: NSNumber?
     @NSManaged var vacantPlaces: NSNumber?

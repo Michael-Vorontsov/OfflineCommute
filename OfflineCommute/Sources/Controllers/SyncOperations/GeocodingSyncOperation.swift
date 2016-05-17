@@ -4,7 +4,7 @@
 import UIKit
 import CoreLocation
 
-public class GeocodingSyncOperation: BasicSyncOperation {
+public class GeocodingSyncOperation: DataRetrievalOperation {
   
   lazy var geocoder = {
     return CLGeocoder()
@@ -16,41 +16,29 @@ public class GeocodingSyncOperation: BasicSyncOperation {
     requestAddress = request
     super.init()
   }
+  
+  
+  override public func retriveData() throws {
 
-  override public func main() {
-    guard !self.cancelled else {
-      return;
-    }
-    
+    var geoError:NSError? = nil
     let semaphore:dispatch_semaphore_t = dispatch_semaphore_create(0);
     
     geocoder.geocodeAddressString(requestAddress, inRegion: nil) { ( placemarks, error) -> Void in
-      
-      guard !self.cancelled else {
-        dispatch_semaphore_signal(semaphore)
-        return
-      }
-      
-      self.state = .ProcessingData
 
-      guard nil == error else {
-        self.breakWithError(error)
-        dispatch_semaphore_signal(semaphore)
-        return
-      }
-      
+      geoError = error
       if placemarks != nil {
-        self.results = placemarks!
+        self.convertedObject = placemarks
       }
       
       dispatch_semaphore_signal(semaphore)
     }
     
-    self.state = .AwaitingRawData
-    
     dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
     
-    self.state = self.cancelled ? (nil == self.error ? .Cancelled : .Error) : .Completed
+    guard nil == geoError else {
+      throw DataRetrievalOperationError.WrappedNSError(error: geoError!)
+    }
+
   }
   
   override public func cancel() {
