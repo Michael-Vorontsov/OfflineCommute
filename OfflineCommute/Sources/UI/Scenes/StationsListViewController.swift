@@ -84,7 +84,7 @@ class StationsListViewController: LocalizableViewController, NSFetchedResultsCon
     
 //    fetchRequest.predicate = NSPredicate(format: "distance < 1000", argumentArray: nil)
     
-    let context:NSManagedObjectContext = self.dataManager.dataContext
+    let context:NSManagedObjectContext = self.dataManager.mainContext
     
     let controller:NSFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
 
@@ -138,10 +138,15 @@ extension StationsListViewController {
   
   @IBAction func refresh() {
     let netOperation = DockStationsSyncOperation()
+    let fileOperation = DockStationFileOperation()
     let distanceOpeartion = UpdateDistanceSyncOperation(center: CLLocationCoordinate2DMake( 51.5085300, -0.1257400))
-
+    fileOperation.addDependency(netOperation)
+    
     distanceOpeartion.addDependency(netOperation)
-    syncManager.addOperations([netOperation, distanceOpeartion]) { (success, results, error) -> Void in
+    distanceOpeartion.addDependency(fileOperation)
+    
+    syncManager.addOperations([netOperation, fileOperation, distanceOpeartion]) { (success, results, error) -> Void in
+      print("Data fetching completed")
     }
   }
   

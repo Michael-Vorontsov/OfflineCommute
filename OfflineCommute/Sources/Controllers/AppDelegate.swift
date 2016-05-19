@@ -37,14 +37,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   var window: UIWindow?
   
-  let coreDataManager = CoreDataManager(databaseName:"CommuteDB" , modelName: "OfflineCommute")
-  
-  //TODO: Setup remote host
-  let dataOperationManager = OCOperationManager(remote:Constants.baseTFLAddress, appKey:Constants.appKey, appID: Constants.appId)
+  lazy var  trackingManager:RouteTrackingController = {
+    let trackingManager = RouteTrackingController()
+    trackingManager.coreDataManager = self.coreDataManager
+    return trackingManager
+  }()
+  lazy var coreDataManager:CoreDataManager = {
+    return CoreDataManager(databaseName:"CommuteDB" , modelName: "OfflineCommute")
+  }()
+  lazy var dataOperationManager:OCOperationManager = {
+    let manager = OCOperationManager(remote:Constants.baseTFLAddress, appKey:Constants.appKey, appID: Constants.appId)
+    let builder = self.objectBuilder
+    manager.objectBuilder = builder
+    manager.coreDataManager =  builder.coreDataManager
+    return manager
+  }()
+  lazy var  objectBuilder:ObjectBuilder = {
+    return OCObjectBuilder(dataManager:self.coreDataManager)
+  }()
   
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     dataOperationManager.coreDataManager = coreDataManager
+    
+    trackingManager.resume()
     
     // Override point for customization after application launch.
     return true
@@ -53,6 +69,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func applicationWillResignActive(application: UIApplication) {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    
+    
+    //Clear all waypoints
+    let request = NSFetchRequest(entityName: "Waypoint")
+    let waypoints = try! coreDataManager.mainContext.executeFetchRequest(request) as! [NSManagedObject]
+    coreDataManager.mainContext.deleteObjects(waypoints)
+    
   }
 
   func applicationDidEnterBackground(application: UIApplication) {
@@ -62,10 +85,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func applicationWillEnterForeground(application: UIApplication) {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    
   }
 
   func applicationDidBecomeActive(application: UIApplication) {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    
+    // Log all waypoints
+    let request = NSFetchRequest(entityName: "Waypoint")
+    let waypoints = try! coreDataManager.mainContext.executeFetchRequest(request) as! [Waypoint]
+    for pin in waypoints {
+      print("Date:\(pin.date!)     Lng: \(pin.lng!)     lat:\(pin.lat) \n\n")
+    }
   }
 
   func applicationWillTerminate(application: UIApplication) {

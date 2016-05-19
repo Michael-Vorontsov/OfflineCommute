@@ -44,7 +44,13 @@
 		D0C23AB91CEB145C00AF7023 /* NSFileManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C23AA71CEB145C00AF7023 /* NSFileManager+Extensions.swift */; };
 		D0C23ABA1CEB145C00AF7023 /* NSManagedObjectContext+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C23AA81CEB145C00AF7023 /* NSManagedObjectContext+Extensions.swift */; };
 		D0DB41E51CEBD8730036AE8A /* OCOperationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DB41E41CEBD8730036AE8A /* OCOperationManager.swift */; };
-		D0DB41E71CEBE00F0036AE8A /* bikepoints.txt in Resources */ = {isa = PBXBuildFile; fileRef = D0DB41E61CEBE00F0036AE8A /* bikepoints.txt */; };
+		D0DB41E71CEBE00F0036AE8A /* bikepoints.json in Resources */ = {isa = PBXBuildFile; fileRef = D0DB41E61CEBE00F0036AE8A /* bikepoints.json */; };
+		D0DB41E91CEC67E50036AE8A /* RouteTrackingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DB41E81CEC67E50036AE8A /* RouteTrackingController.swift */; };
+		D0DB41EC1CEC6B570036AE8A /* Waypoint+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DB41EA1CEC6B570036AE8A /* Waypoint+CoreDataProperties.swift */; };
+		D0DB41ED1CEC6B570036AE8A /* Waypoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DB41EB1CEC6B570036AE8A /* Waypoint.swift */; };
+		D0DB41F21CEDBFF40036AE8A /* OCObjectBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DB41F11CEDBFF40036AE8A /* OCObjectBuilder.swift */; };
+		D0DB41F41CEDC0210036AE8A /* OCObjectBuilder+DockStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DB41F31CEDC0210036AE8A /* OCObjectBuilder+DockStation.swift */; };
+		D0DB41F61CEDC2410036AE8A /* DockStationFileOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DB41F51CEDC2410036AE8A /* DockStationFileOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,7 +108,13 @@
 		D0C23AA71CEB145C00AF7023 /* NSFileManager+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSFileManager+Extensions.swift"; sourceTree = "<group>"; };
 		D0C23AA81CEB145C00AF7023 /* NSManagedObjectContext+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Extensions.swift"; sourceTree = "<group>"; };
 		D0DB41E41CEBD8730036AE8A /* OCOperationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCOperationManager.swift; sourceTree = "<group>"; };
-		D0DB41E61CEBE00F0036AE8A /* bikepoints.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bikepoints.txt; sourceTree = "<group>"; };
+		D0DB41E61CEBE00F0036AE8A /* bikepoints.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bikepoints.json; sourceTree = "<group>"; };
+		D0DB41E81CEC67E50036AE8A /* RouteTrackingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteTrackingController.swift; sourceTree = "<group>"; };
+		D0DB41EA1CEC6B570036AE8A /* Waypoint+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Waypoint+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D0DB41EB1CEC6B570036AE8A /* Waypoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Waypoint.swift; sourceTree = "<group>"; };
+		D0DB41F11CEDBFF40036AE8A /* OCObjectBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCObjectBuilder.swift; sourceTree = "<group>"; };
+		D0DB41F31CEDC0210036AE8A /* OCObjectBuilder+DockStation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "OCObjectBuilder+DockStation.swift"; sourceTree = "<group>"; };
+		D0DB41F51CEDC2410036AE8A /* DockStationFileOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DockStationFileOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,7 +195,7 @@
 		D0C03DCC1C81E62100EF9A95 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				D0DB41E61CEBE00F0036AE8A /* bikepoints.txt */,
+				D0DB41E61CEBE00F0036AE8A /* bikepoints.json */,
 				D0C03DCD1C81E62100EF9A95 /* DataModel */,
 				D0C03DD01C81E62100EF9A95 /* Images */,
 				D0C03DD21C81E62100EF9A95 /* Plists */,
@@ -237,6 +249,7 @@
 		D0C03DD81C81E62100EF9A95 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				D0DB41F01CEDBFBA0036AE8A /* ObjectBuilders */,
 				D0C03DD91C81E62100EF9A95 /* Controllers */,
 				D0C03DDB1C81E62100EF9A95 /* Model */,
 				D0C03DDC1C81E62100EF9A95 /* UI */,
@@ -252,6 +265,7 @@
 				D0C03DEE1C81E89800EF9A95 /* DataSources */,
 				D0C03DDA1C81E62100EF9A95 /* AppDelegate.swift */,
 				D0DB41E41CEBD8730036AE8A /* OCOperationManager.swift */,
+				D0DB41E81CEC67E50036AE8A /* RouteTrackingController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -285,6 +299,8 @@
 		D0C03DE81C81E7D600EF9A95 /* ManagedObjects */ = {
 			isa = PBXGroup;
 			children = (
+				D0DB41EA1CEC6B570036AE8A /* Waypoint+CoreDataProperties.swift */,
+				D0DB41EB1CEC6B570036AE8A /* Waypoint.swift */,
 				D0C03DE91C81E7F800EF9A95 /* DockStation+CoreDataProperties.swift */,
 				D0C03DEA1C81E7F800EF9A95 /* DockStation.swift */,
 			);
@@ -313,6 +329,7 @@
 				D0C03DF31C81E9D400EF9A95 /* GeocodingSyncOperation.swift */,
 				D0C03E061C81F05800EF9A95 /* DockStationsSyncOperation.swift */,
 				D0C03E0E1C825A1800EF9A95 /* UpdateDistanceSyncOperation.swift */,
+				D0DB41F51CEDC2410036AE8A /* DockStationFileOperation.swift */,
 			);
 			path = SyncOperations;
 			sourceTree = "<group>";
@@ -415,6 +432,15 @@
 			path = Support;
 			sourceTree = "<group>";
 		};
+		D0DB41F01CEDBFBA0036AE8A /* ObjectBuilders */ = {
+			isa = PBXGroup;
+			children = (
+				D0DB41F11CEDBFF40036AE8A /* OCObjectBuilder.swift */,
+				D0DB41F31CEDC0210036AE8A /* OCObjectBuilder+DockStation.swift */,
+			);
+			path = ObjectBuilders;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -468,6 +494,11 @@
 				TargetAttributes = {
 					D0C03DA51C81E58F00EF9A95 = {
 						CreatedOnToolsVersion = 7.2.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					D0C03DBC1C81E59000EF9A95 = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -501,7 +532,7 @@
 			files = (
 				D0C03DE71C81E67C00EF9A95 /* Localizable.strings in Resources */,
 				D0C03DE21C81E62100EF9A95 /* LaunchScreen.storyboard in Resources */,
-				D0DB41E71CEBE00F0036AE8A /* bikepoints.txt in Resources */,
+				D0DB41E71CEBE00F0036AE8A /* bikepoints.json in Resources */,
 				D0C03DE01C81E62100EF9A95 /* Assets.xcassets in Resources */,
 				D0C23AA91CEB145C00AF7023 /* Info.plist in Resources */,
 				D0C03DE31C81E62100EF9A95 /* Main.storyboard in Resources */,
@@ -570,8 +601,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0DB41F21CEDBFF40036AE8A /* OCObjectBuilder.swift in Sources */,
 				D0C03DFF1C81E9EE00EF9A95 /* KeychainWrapper.swift in Sources */,
 				D0C03E001C81E9EE00EF9A95 /* LocalizationExtensions.swift in Sources */,
+				D0DB41ED1CEC6B570036AE8A /* Waypoint.swift in Sources */,
 				D0C23AAE1CEB145C00AF7023 /* DataRetrievalOperationProtocol.swift in Sources */,
 				D0C03DE51C81E62100EF9A95 /* StationsListViewController.swift in Sources */,
 				D0C03E051C81EE8300EF9A95 /* DockStationCell.swift in Sources */,
@@ -592,6 +625,10 @@
 				D0C23AAA1CEB145C00AF7023 /* CoreDataManager.swift in Sources */,
 				D0C23AAD1CEB145C00AF7023 /* AccessKeyOperationProtocol.swift in Sources */,
 				D0C23AB71CEB145C00AF7023 /* NetCacheDataRetrievalOperation.swift in Sources */,
+				D0DB41EC1CEC6B570036AE8A /* Waypoint+CoreDataProperties.swift in Sources */,
+				D0DB41F61CEDC2410036AE8A /* DockStationFileOperation.swift in Sources */,
+				D0DB41E91CEC67E50036AE8A /* RouteTrackingController.swift in Sources */,
+				D0DB41F41CEDC0210036AE8A /* OCObjectBuilder+DockStation.swift in Sources */,
 				D0C23AB81CEB145C00AF7023 /* NetworkDataRetrievalOperation.swift in Sources */,
 				D0C03DF81C81E9D400EF9A95 /* GeocodingSyncOperation.swift in Sources */,
 				D0C23AAB1CEB145C00AF7023 /* DataRetrievalOperationManager.swift in Sources */,

@@ -1,7 +1,7 @@
 // Copyright (c) 2016 Lebara. All rights reserved.
 // Author:  Mykhailo Vorontsov <mykhailo.vorontsov@lebara.com>
 
-import UIKit
+import Foundation
 import CoreLocation
 
 public class GeocodingSyncOperation: DataRetrievalOperation {

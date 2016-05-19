@@ -118,11 +118,11 @@ public class NetworkDataRetrievalOperation: DataRetrievalOperation, NetworkDataR
       self.response = response
       self.data = data
       
-      // For debug purpose: print string representation of response data, if any. Uncoment code bellow.
-            if let data = data {
-              let stringRepresentation = NSString(data: data, encoding: 0)
-              print("Request:\(self.task?.originalRequest)\nResponse:\(response)\nData:\(stringRepresentation)")
-            }
+//      // For debug purpose: print string representation of response data, if any. Uncoment code bellow.
+//            if let data = data {
+//              let stringRepresentation = NSString(data: data, encoding: 0)
+//              print("Request:\(self.task?.originalRequest)\nResponse:\(response)\nData:\(stringRepresentation)")
+//            }
       
       // Process possible network layer errors:
       if let nserror = nserror {
