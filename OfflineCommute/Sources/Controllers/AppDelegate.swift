@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-
+import Mapbox
 
 private struct Constants {
   static let baseMockAddress = "http://private-c1975-lebarawallet.apiary-mock.com/v1"
@@ -22,6 +22,9 @@ private struct Constants {
   
   static let appIdKey = "app_id"
   static let appKeyKey = "app_key"
+  
+  static let mapboxKey = "pk.eyJ1IjoibWljaGVsMTYiLCJhIjoiY2lsZ255ZzNxMDA0bXZsbHppdXRlN3BidCJ9.G1Z8P4Lw1AH9JbzVJTFSOg"
+//  static let mapboxKey = "p1.eyJ1IjoibWljaGVsMTYiLCJhIjoiY2lsZ255ZzNxMDA0bXZsbHppdXRlN3BidCJ9.G1Z8P4Lw1AH9JbzVJTFSOg"
 }
 
 
@@ -59,6 +62,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     dataOperationManager.coreDataManager = coreDataManager
+    
+    MGLAccountManager.setAccessToken(Constants.mapboxKey)
     
     trackingManager.resume()
     

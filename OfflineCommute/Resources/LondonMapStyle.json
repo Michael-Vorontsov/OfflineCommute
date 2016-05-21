@@ -1,0 +1,16 @@
+{
+  "version": 8,
+  "sources": {
+    "simple-tiles": {
+      "type": "raster",
+      "url": "file:///Users/michel/Library/Developer/CoreSimulator/Devices/48ADE5AF-3946-4DAD-9868-0F9C4A225192/data/Containers/Bundle/Application/4B6DE253-F827-413A-912A-30FACC3AED5E/OfflineCommute.app/LondonOSCBright.mbtiles",
+    }
+  },
+  "layers": [
+             {
+             "id": "simple-tiles",
+             "type": "raster",
+             "source": "simple-tiles"
+             }
+             ]
+}

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8C7E9DE3C9851CBFC76CBFAC /* Pods_OfflineCommute.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8604B4E3CB739DE246A3349E /* Pods_OfflineCommute.framework */; };
+		8C7E9DE3C9851CBFC76CBFAC /* Pods_OfflineCommute.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8604B4E3CB739DE246A3349E /* Pods_OfflineCommute.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		D0C03DC21C81E59000EF9A95 /* OfflineCommuteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C03DC11C81E59000EF9A95 /* OfflineCommuteTests.swift */; };
 		D0C03DDF1C81E62100EF9A95 /* OfflineCommute.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0C03DCE1C81E62100EF9A95 /* OfflineCommute.xcdatamodeld */; };
 		D0C03DE01C81E62100EF9A95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0C03DD11C81E62100EF9A95 /* Assets.xcassets */; };
