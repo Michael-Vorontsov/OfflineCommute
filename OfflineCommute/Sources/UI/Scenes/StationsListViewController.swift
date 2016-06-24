@@ -9,7 +9,6 @@
 import UIKit
 import CoreData
 import MapKit
-import Mapbox
 
 private struct Constants {
   static let CellReuseID = "Cell"
@@ -17,9 +16,7 @@ private struct Constants {
   static let animationDuration = 0.5
 }
 
-//extension MKAnnotation where Self:DockStation {
-//extension MGLAnnotation where Self:DockStation {
-extension DockStation: MGLAnnotation {
+extension DockStation: MKAnnotation {
   var coordinate: CLLocationCoordinate2D {
     get {
       return CLLocationCoordinate2DMake(latitude.doubleValue, longitude.doubleValue)
@@ -45,8 +42,8 @@ class StationsListViewController: LocalizableViewController, NSFetchedResultsCon
     }
   }
   
-  lazy var mapView:MGLMapView = {
-    let mapView = MGLMapView(frame: self.mapViewContainer.bounds)
+  lazy var mapView:MKMapView = {
+    let mapView = MKMapView(frame: self.mapViewContainer.bounds)
     mapView.autoresizingMask = [.FlexibleHeight, .FlexibleWidth]
     return mapView
     
@@ -75,7 +72,7 @@ class StationsListViewController: LocalizableViewController, NSFetchedResultsCon
 //    return calendar
   }()
   
-  var currentLocationAnnotation:MGLAnnotation?
+  var currentLocationAnnotation:MKAnnotation?
   
   lazy var resultsController:NSFetchedResultsController = {
     let fetchRequest = NSFetchRequest(entityName: "DockStation")
@@ -337,7 +334,7 @@ extension StationsListViewController:UISearchBarDelegate {
       
       guardSelf.mapView.setUserTrackingMode(.None, animated: false)
       
-      let annotation = MGLPointAnnotation()
+      let annotation = MKPointAnnotation()
       annotation.coordinate = coordinate
       
       if nil != guardSelf.currentLocationAnnotation {
