@@ -7,6 +7,7 @@ target 'OfflineCommute' do
 
 platform :ios, '8.0'
 pod 'Mapbox-iOS-SDK'
+pod 'CCHMapClusterController'
 use_frameworks!
 
 end

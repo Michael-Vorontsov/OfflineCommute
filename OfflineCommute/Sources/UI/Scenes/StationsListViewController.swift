@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import MapKit
+import CCHMapClusterController
 
 private struct Constants {
   static let CellReuseID = "Cell"
@@ -35,6 +36,11 @@ extension DockStation: MKAnnotation {
 
 class StationsListViewController: LocalizableViewController, NSFetchedResultsControllerDelegate, UITableViewDataSource, UITabBarDelegate {
 
+  lazy var mapClusterController:CCHMapClusterController = {
+    let controller = CCHMapClusterController(mapView:self.mapView)
+    return controller
+  }()
+  
   @IBOutlet weak var mapViewContainer: UIView!
   @IBOutlet weak var tableView: UITableView! {
     didSet {
@@ -245,18 +251,21 @@ extension StationsListViewController {
     switch type {
     case .Insert:
       tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Left)
-      mapView.addAnnotation(anObject)
+      mapClusterController.addAnnotations([anObject], withCompletionHandler: nil)
+//      mapView.addAnnotation(anObject)
     case .Delete:
       tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Left)
-      mapView.removeAnnotation(anObject)
+      mapClusterController.removeAnnotations([anObject], withCompletionHandler: nil)
+
+//      mapView.removeAnnotation(anObject)
     case  .Move:
       tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Left)
       tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Left)
     case .Update:
       tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
       tableView.insertRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-      mapView.removeAnnotation(anObject)
-      mapView.addAnnotation(anObject)
+//      mapView.removeAnnotation(anObject)
+//      mapView.addAnnotation(anObject)
     }
   }
 }
