@@ -43,6 +43,10 @@
 		D0C23AB81CEB145C00AF7023 /* NetworkDataRetrievalOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C23AA51CEB145C00AF7023 /* NetworkDataRetrievalOperation.swift */; };
 		D0C23AB91CEB145C00AF7023 /* NSFileManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C23AA71CEB145C00AF7023 /* NSFileManager+Extensions.swift */; };
 		D0C23ABA1CEB145C00AF7023 /* NSManagedObjectContext+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C23AA81CEB145C00AF7023 /* NSManagedObjectContext+Extensions.swift */; };
+		D0D283621D21784A00C2958A /* OCClusterAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D283611D21784A00C2958A /* OCClusterAnnotationView.swift */; };
+		D0D283651D21789900C2958A /* OCCachableTileOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D283641D21789900C2958A /* OCCachableTileOverlay.swift */; };
+		D0D283671D217D0000C2958A /* StationsListViewController+MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D283661D217D0000C2958A /* StationsListViewController+MapView.swift */; };
+		D0D283691D217D9800C2958A /* StationsListViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D283681D217D9800C2958A /* StationsListViewController+TableView.swift */; };
 		D0DB41E51CEBD8730036AE8A /* OCOperationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DB41E41CEBD8730036AE8A /* OCOperationManager.swift */; };
 		D0DB41E71CEBE00F0036AE8A /* bikepoints.json in Resources */ = {isa = PBXBuildFile; fileRef = D0DB41E61CEBE00F0036AE8A /* bikepoints.json */; };
 		D0DB41E91CEC67E50036AE8A /* RouteTrackingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DB41E81CEC67E50036AE8A /* RouteTrackingController.swift */; };
@@ -108,6 +112,10 @@
 		D0C23AA71CEB145C00AF7023 /* NSFileManager+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSFileManager+Extensions.swift"; sourceTree = "<group>"; };
 		D0C23AA81CEB145C00AF7023 /* NSManagedObjectContext+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Extensions.swift"; sourceTree = "<group>"; };
 		D0D2835D1D1D8FFA00C2958A /* OfflineCommute-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OfflineCommute-Bridging-Header.h"; sourceTree = "<group>"; };
+		D0D283611D21784A00C2958A /* OCClusterAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCClusterAnnotationView.swift; sourceTree = "<group>"; };
+		D0D283641D21789900C2958A /* OCCachableTileOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCCachableTileOverlay.swift; sourceTree = "<group>"; };
+		D0D283661D217D0000C2958A /* StationsListViewController+MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StationsListViewController+MapView.swift"; sourceTree = "<group>"; };
+		D0D283681D217D9800C2958A /* StationsListViewController+TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StationsListViewController+TableView.swift"; sourceTree = "<group>"; };
 		D0DB41E41CEBD8730036AE8A /* OCOperationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCOperationManager.swift; sourceTree = "<group>"; };
 		D0DB41E61CEBE00F0036AE8A /* bikepoints.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bikepoints.json; sourceTree = "<group>"; };
 		D0DB41E81CEC67E50036AE8A /* RouteTrackingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteTrackingController.swift; sourceTree = "<group>"; };
@@ -311,8 +319,13 @@
 		D0C03DED1C81E85D00EF9A95 /* StationsList */ = {
 			isa = PBXGroup;
 			children = (
+				D0D283631D21786D00C2958A /* New Group */,
 				D0C03DDE1C81E62100EF9A95 /* StationsListViewController.swift */,
+				D0D283661D217D0000C2958A /* StationsListViewController+MapView.swift */,
+				D0D283681D217D9800C2958A /* StationsListViewController+TableView.swift */,
 				D0C03E041C81EE8300EF9A95 /* DockStationCell.swift */,
+				D0D283611D21784A00C2958A /* OCClusterAnnotationView.swift */,
+				D0D283641D21789900C2958A /* OCCachableTileOverlay.swift */,
 			);
 			path = StationsList;
 			sourceTree = "<group>";
@@ -432,6 +445,13 @@
 				D0C23AA81CEB145C00AF7023 /* NSManagedObjectContext+Extensions.swift */,
 			);
 			path = Support;
+			sourceTree = "<group>";
+		};
+		D0D283631D21786D00C2958A /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "New Group";
 			sourceTree = "<group>";
 		};
 		D0DB41F01CEDBFBA0036AE8A /* ObjectBuilders */ = {
@@ -606,6 +626,7 @@
 				D0DB41F21CEDBFF40036AE8A /* OCObjectBuilder.swift in Sources */,
 				D0C03DFF1C81E9EE00EF9A95 /* KeychainWrapper.swift in Sources */,
 				D0C03E001C81E9EE00EF9A95 /* LocalizationExtensions.swift in Sources */,
+				D0D283691D217D9800C2958A /* StationsListViewController+TableView.swift in Sources */,
 				D0DB41ED1CEC6B570036AE8A /* Waypoint.swift in Sources */,
 				D0C23AAE1CEB145C00AF7023 /* DataRetrievalOperationProtocol.swift in Sources */,
 				D0C03DE51C81E62100EF9A95 /* StationsListViewController.swift in Sources */,
@@ -621,6 +642,7 @@
 				D0C23AB51CEB145C00AF7023 /* DataRetrievalOperation.swift in Sources */,
 				D0C03DE41C81E62100EF9A95 /* AppDelegate.swift in Sources */,
 				D0DB41E51CEBD8730036AE8A /* OCOperationManager.swift in Sources */,
+				D0D283671D217D0000C2958A /* StationsListViewController+MapView.swift in Sources */,
 				D0C03DDF1C81E62100EF9A95 /* OfflineCommute.xcdatamodeld in Sources */,
 				D0C03DEC1C81E7F800EF9A95 /* DockStation.swift in Sources */,
 				D0C23AAC1CEB145C00AF7023 /* ObjectBuilder.swift in Sources */,
@@ -630,9 +652,11 @@
 				D0DB41EC1CEC6B570036AE8A /* Waypoint+CoreDataProperties.swift in Sources */,
 				D0DB41F61CEDC2410036AE8A /* DockStationFileOperation.swift in Sources */,
 				D0DB41E91CEC67E50036AE8A /* RouteTrackingController.swift in Sources */,
+				D0D283621D21784A00C2958A /* OCClusterAnnotationView.swift in Sources */,
 				D0DB41F41CEDC0210036AE8A /* OCObjectBuilder+DockStation.swift in Sources */,
 				D0C23AB81CEB145C00AF7023 /* NetworkDataRetrievalOperation.swift in Sources */,
 				D0C03DF81C81E9D400EF9A95 /* GeocodingSyncOperation.swift in Sources */,
+				D0D283651D21789900C2958A /* OCCachableTileOverlay.swift in Sources */,
 				D0C23AAB1CEB145C00AF7023 /* DataRetrievalOperationManager.swift in Sources */,
 				D0C23AB21CEB145C00AF7023 /* CachedNetworkDataRetrievalOperation.swift in Sources */,
 				D0C23AAF1CEB145C00AF7023 /* ManagedObjectRetrievalOperationProtocol.swift in Sources */,

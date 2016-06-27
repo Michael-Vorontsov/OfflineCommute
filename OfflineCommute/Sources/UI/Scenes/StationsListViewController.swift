@@ -13,7 +13,6 @@ import CCHMapClusterController
 
 private struct Constants {
   static let CellReuseID = "Cell"
-  static let pinViewReuseID = "Pin"
   static let animationDuration = 0.5
 }
 
@@ -34,11 +33,12 @@ extension DockStation: MKAnnotation {
   
 }
 
-class StationsListViewController: LocalizableViewController, NSFetchedResultsControllerDelegate, UITableViewDataSource, UITabBarDelegate {
+class StationsListViewController: LocalizableViewController, NSFetchedResultsControllerDelegate, UITabBarDelegate {
 
   lazy var mapClusterController:CCHMapClusterController = {
     let controller = CCHMapClusterController(mapView:self.mapView)
-    controller.reuseExistingClusterAnnotations = false
+    controller.delegate = self
+//    controller.reuseExistingClusterAnnotations = false
     return controller
   }()
   
@@ -87,8 +87,6 @@ class StationsListViewController: LocalizableViewController, NSFetchedResultsCon
     
     fetchRequest.sortDescriptors = [NSSortDescriptor(key: "distance", ascending: true), NSSortDescriptor(key: "sid", ascending: true)]
     
-//    fetchRequest.predicate = NSPredicate(format: "distance < 1000", argumentArray: nil)
-    
     let context:NSManagedObjectContext = self.dataManager.mainContext
     
     let controller:NSFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
@@ -104,102 +102,7 @@ class StationsListViewController: LocalizableViewController, NSFetchedResultsCon
 }
 
 
-class VHTileOverlay:MKTileOverlay {
-  
-  let operationQueue = NSOperationQueue()
-  let directoryPath = NSFileManager.applicationCachesDirectory
-  let session = NSURLSession.sharedSession()
 
-  override init(URLTemplate: String?) {
-    super.init(URLTemplate: URLTemplate)
-  }
-  
-//  override func URLForTilePath(path: MKTileOverlayPath) -> NSURL {
-//    return NSURL(string: NSString(format: "http://tile.openstreetmap.org/%ld/%ld/%ld.png", path.z, path.x, path.y) as String)!
-//  }
-  
-  override func loadTileAtPath(path: MKTileOverlayPath, result: (NSData?, NSError?) -> Void) {
-//    guard let result = result else {
-//      return
-//    }
-    
-    var pathToFile = self.URLForTilePath(path).absoluteString
-    pathToFile = pathToFile.stringByReplacingOccurrencesOfString("/", withString: "|")
-    if let cachedData = self.loadFileWithName(pathToFile as String) {
-      result(cachedData, nil)
-    }
-    
-    let task = session.dataTaskWithURL(self.URLForTilePath(path)) { (data, response, error) in
-      if let data = data {
-        self.saveFileWithName(pathToFile, imageData: data)
-      }
-      result(data, error)
-    }
-    task.resume()
-    
-  }
-  
-  func pathToImage(imageName:String) -> NSURL {
-    let imageFile = directoryPath.URLByAppendingPathComponent(imageName)
-    return imageFile
-  }
-
-  func loadFileWithName(fileName:String) -> NSData? {
-    let data = NSData(contentsOfURL: pathToImage(fileName))
-    return data
-  }
-  
-  func saveFileWithName(name:String, imageData:NSData) -> Bool {
-    let success = imageData.writeToURL(pathToImage(name), atomically: true)
-    return success
-  }
-  
-}
-
-class OCClusterAnotationView: MKAnnotationView {
-  lazy var label:UILabel = {
-    let label = UILabel(frame: self.bounds)
-    label.autoresizingMask = [.FlexibleHeight, .FlexibleWidth]
-    label.textAlignment = .Center
-    label.textColor = UIColor.whiteColor()
-    self.addSubview(label)
-    label.backgroundColor = UIColor.blueColor().colorWithAlphaComponent(0.3)
-
-    return label
-  }()
-  
-  var count:Int {
-    get {
-      return Int(label.text!)!
-    }
-    set {
-      label.text = String(newValue)
-      
-      let sizePoint:CGFloat = 5.0
-      let annotationsCount = newValue
-      let scale = Int(log(Double(annotationsCount)))
-      let size = 30.0 + sizePoint * CGFloat(scale)
-      let center = self.center
-      self.frame = CGRectMake(0, 0, size, size)
-      self.center = center
-//      label.layer.cornerRadius = size / 2.0
-      layer.cornerRadius = size / 2.0
-      self.clipsToBounds = true
-
-
-//      backgroundColor = UIColor.blueColor().colorWithAlphaComponent(0.3)
-    }
-  }
-  
-  override func awakeFromNib() {
-    super.awakeFromNib()
-    
-  }
-  
-  
-  
-  
-}
 
 // MARK: -Overrides
 
@@ -207,25 +110,18 @@ extension StationsListViewController {
   
   
   override func viewDidLoad() {
-
-    
     super.viewDidLoad()
 
     
     let template = "http://tile.openstreetmap.org/{z}/{x}/{y}.png";
-    let overlay = VHTileOverlay(URLTemplate: template)
+    let overlay = OCCachableTileOverlay(URLTemplate: template)
     overlay.canReplaceMapContent = true
+    
     let newMapView = self.mapView
+// Uncomment below to enable cahcable map tiles
     newMapView.addOverlay(overlay, level: .AboveLabels)
+    
     mapViewContainer.addSubview(newMapView)
-//http://server/path?x={x}&y={y}&z={z}&scale={scale}.
-//    let template = "http://tile.openstreetmap.org/{z}/{x}/{y}.png";
-    
-//    VHTileOverlay *overlay = [[VHTileOverlay alloc] initWithURLTemplate:template];
-//    overlay.canReplaceMapContent = YES;
-//    [self.mapView addOverlay:overlay level:MKOverlayLevelAboveLabels];
-    
-    
     
   }
   
@@ -291,55 +187,6 @@ extension StationsListViewController {
 
 }
 
-// MARK: -UITableViewDelegate
-extension StationsListViewController {
-  
-  func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return resultsController.fetchedObjects?.count ?? 0
-  }
-  
-  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCellWithIdentifier(Constants.CellReuseID, forIndexPath: indexPath) as? DockStationCell,
-      let station = resultsController.objectAtIndexPath(indexPath) as? DockStation
-      else {
-        return UITableViewCell(style: .Default, reuseIdentifier: nil)
-    }
-    
-    cell.nameLabel.text = station.title
-    cell.vacantPlacesLabel.text = station.vacantPlaces?.stringValue ?? "-"
-    cell.bikesAvalialbleLabel.text = station.bikesAvailable?.stringValue ?? "-"
-    cell.distanceLabel.text = String((Int(station.distance ?? 0.0))) + "m" ?? "-"
-    
-//    NSDateComponents *components = [c components:NSHourCalendarUnit fromDate:d2 toDate:d1 options:0];
-//    NSInteger diff = components.minute;
-    if (nil != station.updateDate) {
-      cell.updateTimeLabel.text = stringForNowSinceDate(station.updateDate)
-    } else {
-      cell.updateTimeLabel.text = ""
-    }
-    
-    return cell
-  }
-  
-  func stringForNowSinceDate(date:NSDate) -> String{
-//    let dateComponents = dateCalendar.components([.Minute , .Hour, .Day], fromDate: date)
-    let dateComponents = dateCalendar.components([.Minute , .Hour, .Day], fromDate: date, toDate: NSDate(), options: .MatchStrictly)
-    var dateString = "Updated:"
-    if dateComponents.day > 0 {
-      dateString += "\(dateComponents.day)d "
-    }
-    if dateComponents.hour > 0 {
-      dateString += "\(dateComponents.hour)h "
-    }
-    if dateComponents.minute > 0 {
-      dateString += "\(dateComponents.minute)m "
-    }
-    dateString += "ago"
-    return dateString
-  }
-}
-
-
 
 //MARKL -NSFetchedResultsControllerDelegate
 extension StationsListViewController {
@@ -377,50 +224,6 @@ extension StationsListViewController {
 //      mapView.addAnnotation(anObject)
     }
   }
-}
-
-// MARK: - MKMapViewDelegate
-extension StationsListViewController: MKMapViewDelegate {
-  
-  func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
-    let render = MKTileOverlayRenderer(overlay: overlay)
-    return render
-  }
-  
-  func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
-    
-    
-    guard let annotation = annotation as? CCHMapClusterAnnotation else{ return nil}
-    if annotation.isCluster() {
-      let clusterView = mapView.dequeueReusableAnnotationViewWithIdentifier("ClusterView") as? OCClusterAnotationView
-        ?? OCClusterAnotationView(annotation: annotation, reuseIdentifier: "ClusterView")
-      clusterView.count = annotation.annotations.count
-      return clusterView
-    }
-    
-    guard let dockAnnotation = annotation.annotations.first as? DockStation else {
-      return nil
-    }
-    
-    let view = MKPinAnnotationView(annotation: dockAnnotation, reuseIdentifier: Constants.pinViewReuseID)
-    
-    view.canShowCallout = true
-
-    let bikesCount = dockAnnotation.bikesAvailable?.integerValue ?? 0
-    let dockCount = dockAnnotation.vacantPlaces?.integerValue ?? 0
-
-    if bikesCount < 1 && dockCount < 1 {
-      view.pinTintColor = UIColor.lightGrayColor()
-    } else if bikesCount < 1 {
-      view.pinTintColor = UIColor.yellowColor()
-    } else if dockCount < 1 {
-      view.pinTintColor = UIColor.blueColor()
-    } else {
-      view.pinTintColor = UIColor.greenColor()
-    }
-    return view
-  }
-  
 }
 
 // MARK: -UITabbarDelegate

@@ -38,7 +38,10 @@ public class GeocodingSyncOperation: DataRetrievalOperation {
     guard nil == geoError else {
       throw DataRetrievalOperationError.WrappedNSError(error: geoError!)
     }
-
+  }
+  
+  override public func parseData() throws {
+    self.results = self.convertedObject as? [CLPlacemark]
   }
   
   override public func cancel() {
