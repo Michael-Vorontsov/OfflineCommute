@@ -38,6 +38,7 @@ class StationsListViewController: LocalizableViewController, NSFetchedResultsCon
 
   lazy var mapClusterController:CCHMapClusterController = {
     let controller = CCHMapClusterController(mapView:self.mapView)
+    controller.reuseExistingClusterAnnotations = false
     return controller
   }()
   
@@ -155,6 +156,51 @@ class VHTileOverlay:MKTileOverlay {
   
 }
 
+class OCClusterAnotationView: MKAnnotationView {
+  lazy var label:UILabel = {
+    let label = UILabel(frame: self.bounds)
+    label.autoresizingMask = [.FlexibleHeight, .FlexibleWidth]
+    label.textAlignment = .Center
+    label.textColor = UIColor.whiteColor()
+    self.addSubview(label)
+    label.backgroundColor = UIColor.blueColor().colorWithAlphaComponent(0.3)
+
+    return label
+  }()
+  
+  var count:Int {
+    get {
+      return Int(label.text!)!
+    }
+    set {
+      label.text = String(newValue)
+      
+      let sizePoint:CGFloat = 5.0
+      let annotationsCount = newValue
+      let scale = Int(log(Double(annotationsCount)))
+      let size = 30.0 + sizePoint * CGFloat(scale)
+      let center = self.center
+      self.frame = CGRectMake(0, 0, size, size)
+      self.center = center
+//      label.layer.cornerRadius = size / 2.0
+      layer.cornerRadius = size / 2.0
+      self.clipsToBounds = true
+
+
+//      backgroundColor = UIColor.blueColor().colorWithAlphaComponent(0.3)
+    }
+  }
+  
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    
+  }
+  
+  
+  
+  
+}
+
 // MARK: -Overrides
 
 extension StationsListViewController {
@@ -245,12 +291,8 @@ extension StationsListViewController {
 
 }
 
-
-
 // MARK: -UITableViewDelegate
 extension StationsListViewController {
-  
-
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return resultsController.fetchedObjects?.count ?? 0
@@ -345,33 +387,39 @@ extension StationsListViewController: MKMapViewDelegate {
     return render
   }
   
-//  func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
-//    guard let annotation = annotation as? DockStation else {
-//      return nil
-//    }
-//    let view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: Constants.pinViewReuseID)
-//    
-//    view.canShowCallout = true
-//
-//    let bikesCount = annotation.bikesAvailable?.integerValue ?? 0
-//    let dockCount = annotation.vacantPlaces?.integerValue ?? 0
-//
-//    if bikesCount < 1 && dockCount < 1 {
-//      view.pinTintColor = UIColor.lightGrayColor()
-//    } else if bikesCount < 1 {
-//      view.pinTintColor = UIColor.yellowColor()
-//    } else if dockCount < 1 {
-//      view.pinTintColor = UIColor.blueColor()
-//    } else {
-//      view.pinTintColor = UIColor.greenColor()
-//    }
-//    
-//    return view
-//  }
-  
-//  func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
-//    
-//  }
+  func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+    
+    
+    guard let annotation = annotation as? CCHMapClusterAnnotation else{ return nil}
+    if annotation.isCluster() {
+      let clusterView = mapView.dequeueReusableAnnotationViewWithIdentifier("ClusterView") as? OCClusterAnotationView
+        ?? OCClusterAnotationView(annotation: annotation, reuseIdentifier: "ClusterView")
+      clusterView.count = annotation.annotations.count
+      return clusterView
+    }
+    
+    guard let dockAnnotation = annotation.annotations.first as? DockStation else {
+      return nil
+    }
+    
+    let view = MKPinAnnotationView(annotation: dockAnnotation, reuseIdentifier: Constants.pinViewReuseID)
+    
+    view.canShowCallout = true
+
+    let bikesCount = dockAnnotation.bikesAvailable?.integerValue ?? 0
+    let dockCount = dockAnnotation.vacantPlaces?.integerValue ?? 0
+
+    if bikesCount < 1 && dockCount < 1 {
+      view.pinTintColor = UIColor.lightGrayColor()
+    } else if bikesCount < 1 {
+      view.pinTintColor = UIColor.yellowColor()
+    } else if dockCount < 1 {
+      view.pinTintColor = UIColor.blueColor()
+    } else {
+      view.pinTintColor = UIColor.greenColor()
+    }
+    return view
+  }
   
 }
 
