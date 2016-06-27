@@ -24,8 +24,12 @@
 	<true/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
 		<key>NSExceptionDomains</key>
 		<dict>
+			<key>http://tile.openstreetmap.org/</key>
+			<string></string>
 			<key>https://api.tfl.gov.uk</key>
 			<string></string>
 		</dict>
