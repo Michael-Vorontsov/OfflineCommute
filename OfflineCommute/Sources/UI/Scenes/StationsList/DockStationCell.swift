@@ -18,4 +18,6 @@ class DockStationCell: UITableViewCell {
   @IBOutlet weak var distanceLabel: UILabel!
   @IBOutlet weak var addressLabel: UILabel!
   
+  @IBOutlet weak var badge: BadgeView!
+  
 }

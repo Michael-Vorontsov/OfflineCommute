@@ -31,6 +31,10 @@ extension StationsListViewController: UITableViewDataSource  {
     cell.bikesAvalialbleLabel.text = station.bikesAvailable?.stringValue ?? "-"
     cell.distanceLabel.text = String((Int(station.distance ?? 0.0))) + "m" ?? "-"
     
+    cell.badge.rates = [station.bikesAvailable.integerValue ?? 0,
+      station.vacantPlaces.integerValue ?? 0
+    ]
+    
     if (nil != station.updateDate) {
       cell.updateTimeLabel.text = stringForNowSinceDate(station.updateDate)
     } else {

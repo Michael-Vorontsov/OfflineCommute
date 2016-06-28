@@ -49,7 +49,7 @@ class BadgeAnnotationView: MKAnnotationView {
   
 }
 
-private class BadgeView: UIView {
+class BadgeView: UIView {
   
   var rates:[Int]? {
     didSet {
@@ -90,8 +90,9 @@ private class BadgeView: UIView {
     super.drawRect(rect)
     
     let radius = floor(min(bounds.size.width, bounds.size.height) / 2.0) - 2.0
+    let center = CGPointMake(CGRectGetMidX(bounds), CGRectGetMidY(bounds))
     var angle:CGFloat = 0.0
-    print(total)
+    
     guard let total = self.total, let rates = rates else {return}
     var index = 0
     for rate in rates {
