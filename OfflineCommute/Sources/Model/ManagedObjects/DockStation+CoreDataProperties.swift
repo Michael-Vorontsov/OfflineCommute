@@ -21,9 +21,9 @@ extension DockStation {
     @NSManaged var title: String?
     @NSManaged var active: NSNumber?
     @NSManaged var totalPlaces: NSNumber?
-    @NSManaged var vacantPlaces: NSNumber?
+    @NSManaged var vacantPlaces: NSNumber!
     @NSManaged var sid: String!
-    @NSManaged var bikesAvailable: NSNumber?
+    @NSManaged var bikesAvailable: NSNumber!
     @NSManaged var updateDate: NSDate!
 
 }

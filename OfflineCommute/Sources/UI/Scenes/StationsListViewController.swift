@@ -118,8 +118,10 @@ extension StationsListViewController {
     overlay.canReplaceMapContent = true
     
     let newMapView = self.mapView
-// Uncomment below to enable cahcable map tiles
-    newMapView.addOverlay(overlay, level: .AboveLabels)
+    mapView.setUserTrackingMode(.FollowWithHeading, animated: false)
+
+// Comment/Uncomment below to toggle cachable map tiles
+//    newMapView.addOverlay(overlay, level: .AboveLabels)
     
     mapViewContainer.addSubview(newMapView)
     
@@ -128,8 +130,8 @@ extension StationsListViewController {
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
     
-//    mapView.showsUserLocation = true
-//    mapView.setUserTrackingMode(.FollowWithHeading, animated: true)
+    mapView.showsUserLocation = true
+    mapView.setUserTrackingMode(.FollowWithHeading, animated: false)
     
   }
   
@@ -220,6 +222,8 @@ extension StationsListViewController {
     case .Update:
       tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
       tableView.insertRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
+      mapClusterController.removeAnnotations([anObject], withCompletionHandler: nil)
+      mapClusterController.addAnnotations([anObject], withCompletionHandler: nil)
 //      mapView.removeAnnotation(anObject)
 //      mapView.addAnnotation(anObject)
     }

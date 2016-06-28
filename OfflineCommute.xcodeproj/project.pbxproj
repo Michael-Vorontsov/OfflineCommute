@@ -47,6 +47,7 @@
 		D0D283651D21789900C2958A /* OCCachableTileOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D283641D21789900C2958A /* OCCachableTileOverlay.swift */; };
 		D0D283671D217D0000C2958A /* StationsListViewController+MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D283661D217D0000C2958A /* StationsListViewController+MapView.swift */; };
 		D0D283691D217D9800C2958A /* StationsListViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D283681D217D9800C2958A /* StationsListViewController+TableView.swift */; };
+		D0D2836B1D218DBC00C2958A /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D2836A1D218DBC00C2958A /* BadgeView.swift */; };
 		D0DB41E51CEBD8730036AE8A /* OCOperationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DB41E41CEBD8730036AE8A /* OCOperationManager.swift */; };
 		D0DB41E71CEBE00F0036AE8A /* bikepoints.json in Resources */ = {isa = PBXBuildFile; fileRef = D0DB41E61CEBE00F0036AE8A /* bikepoints.json */; };
 		D0DB41E91CEC67E50036AE8A /* RouteTrackingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DB41E81CEC67E50036AE8A /* RouteTrackingController.swift */; };
@@ -116,6 +117,7 @@
 		D0D283641D21789900C2958A /* OCCachableTileOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCCachableTileOverlay.swift; sourceTree = "<group>"; };
 		D0D283661D217D0000C2958A /* StationsListViewController+MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StationsListViewController+MapView.swift"; sourceTree = "<group>"; };
 		D0D283681D217D9800C2958A /* StationsListViewController+TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StationsListViewController+TableView.swift"; sourceTree = "<group>"; };
+		D0D2836A1D218DBC00C2958A /* BadgeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
 		D0DB41E41CEBD8730036AE8A /* OCOperationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCOperationManager.swift; sourceTree = "<group>"; };
 		D0DB41E61CEBE00F0036AE8A /* bikepoints.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bikepoints.json; sourceTree = "<group>"; };
 		D0DB41E81CEC67E50036AE8A /* RouteTrackingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteTrackingController.swift; sourceTree = "<group>"; };
@@ -326,6 +328,7 @@
 				D0C03E041C81EE8300EF9A95 /* DockStationCell.swift */,
 				D0D283611D21784A00C2958A /* OCClusterAnnotationView.swift */,
 				D0D283641D21789900C2958A /* OCCachableTileOverlay.swift */,
+				D0D2836A1D218DBC00C2958A /* BadgeView.swift */,
 			);
 			path = StationsList;
 			sourceTree = "<group>";
@@ -516,6 +519,7 @@
 				TargetAttributes = {
 					D0C03DA51C81E58F00EF9A95 = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = WCL42T797B;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -639,6 +643,7 @@
 				D0C03DEB1C81E7F800EF9A95 /* DockStation+CoreDataProperties.swift in Sources */,
 				D0C23AB91CEB145C00AF7023 /* NSFileManager+Extensions.swift in Sources */,
 				D0C03E071C81F05800EF9A95 /* DockStationsSyncOperation.swift in Sources */,
+				D0D2836B1D218DBC00C2958A /* BadgeView.swift in Sources */,
 				D0C23AB51CEB145C00AF7023 /* DataRetrievalOperation.swift in Sources */,
 				D0C03DE41C81E62100EF9A95 /* AppDelegate.swift in Sources */,
 				D0DB41E51CEBD8730036AE8A /* OCOperationManager.swift in Sources */,
@@ -772,10 +777,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "$(SRCROOT)/OfflineCommute/Resources/Plists/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mvorontsov.OfflineCommute;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "OfflineCommute/Sources/Support/OfflineCommute-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -787,10 +795,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "$(SRCROOT)/OfflineCommute/Resources/Plists/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mvorontsov.OfflineCommute;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "OfflineCommute/Sources/Support/OfflineCommute-Bridging-Header.h";
 			};
 			name = Release;

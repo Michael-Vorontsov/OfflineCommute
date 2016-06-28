@@ -10,13 +10,15 @@ import UIKit
 
 
 class OCClusterAnotationView: MKAnnotationView {
+  
   lazy var label:UILabel = {
     let label = UILabel(frame: self.bounds)
     label.autoresizingMask = [.FlexibleHeight, .FlexibleWidth]
     label.textAlignment = .Center
     label.textColor = UIColor.whiteColor()
+    label.minimumScaleFactor = 2.0
     self.addSubview(label)
-    label.backgroundColor = UIColor.blueColor()
+    label.backgroundColor = UIColor.blueColor().colorWithAlphaComponent(0.3)
     
     return label
   }()
