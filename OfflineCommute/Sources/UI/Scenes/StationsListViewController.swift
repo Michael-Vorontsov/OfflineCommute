@@ -131,7 +131,7 @@ extension StationsListViewController {
     super.viewWillAppear(animated)
     
     mapView.showsUserLocation = true
-    mapView.setUserTrackingMode(.FollowWithHeading, animated: false)
+    showCurrentLocation(self)
     
   }
   
@@ -151,15 +151,19 @@ extension StationsListViewController {
 extension StationsListViewController {
   
   @IBAction func refresh() {
+    
+    let centerLocation = self.currentLocationAnnotation?.coordinate ?? mapView.userLocation.location?.coordinate ?? CLLocationCoordinate2DMake( 51.5085300, -0.1257400)
+    
     let netOperation = DockStationsSyncOperation()
-    let fileOperation = DockStationFileOperation()
-    let distanceOpeartion = UpdateDistanceSyncOperation(center: CLLocationCoordinate2DMake( 51.5085300, -0.1257400))
-    fileOperation.addDependency(netOperation)
+//    let fileOperation = DockStationFileOperation()
+    let distanceOpeartion = UpdateDistanceSyncOperation(center: centerLocation)
+//    fileOperation.addDependency(netOperation)
     
     distanceOpeartion.addDependency(netOperation)
-    distanceOpeartion.addDependency(fileOperation)
+//    distanceOpeartion.addDependency(fileOperation)
     
-    syncManager.addOperations([netOperation, fileOperation, distanceOpeartion]) { (success, results, error) -> Void in
+//    syncManager.addOperations([netOperation, fileOperation, distanceOpeartion]) { (success, results, error) -> Void in
+    syncManager.addOperations([netOperation, distanceOpeartion]) { (success, results, error) -> Void in
       print("Data fetching completed")
     }
   }
@@ -184,6 +188,10 @@ extension StationsListViewController {
   
   @IBAction func showCurrentLocation(sender: AnyObject) {
     self.mapView.setUserTrackingMode(.FollowWithHeading, animated: true)
+    if let currentLocation = mapView.userLocation.location?.coordinate {
+      let distanceOperation = UpdateDistanceSyncOperation(center:currentLocation)
+      syncManager.addOperations([distanceOperation])
+    }
   }
   
 
@@ -219,11 +227,11 @@ extension StationsListViewController {
     case  .Move:
       tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Left)
       tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Left)
-    case .Update:
-      tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-      tableView.insertRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-      mapClusterController.removeAnnotations([anObject], withCompletionHandler: nil)
-      mapClusterController.addAnnotations([anObject], withCompletionHandler: nil)
+    case .Update: break
+//      tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
+//      tableView.insertRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
+//      mapClusterController.removeAnnotations([anObject], withCompletionHandler: nil)
+//      mapClusterController.addAnnotations([anObject], withCompletionHandler: nil)
 //      mapView.removeAnnotation(anObject)
 //      mapView.addAnnotation(anObject)
     }
@@ -269,7 +277,7 @@ extension StationsListViewController:UISearchBarDelegate {
         return
       }
       
-      guardSelf.mapView.setUserTrackingMode(.None, animated: false)
+//      guardSelf.mapView.setUserTrackingMode(.None, animated: false)
       
       let annotation = MKPointAnnotation()
       annotation.coordinate = coordinate

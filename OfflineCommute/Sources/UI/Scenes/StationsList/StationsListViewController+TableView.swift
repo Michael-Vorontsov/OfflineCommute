@@ -10,10 +10,11 @@ import UIKit
 
 private struct Constants {
   static let CellReuseID = "Cell"
+  static let ZoomedDistance = 500.0
 }
 
 // MARK: -UITableViewDelegate
-extension StationsListViewController: UITableViewDataSource  {
+extension StationsListViewController: UITableViewDataSource, UITableViewDelegate  {
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return resultsController.fetchedObjects?.count ?? 0
@@ -29,7 +30,11 @@ extension StationsListViewController: UITableViewDataSource  {
     cell.nameLabel.text = station.title
     cell.vacantPlacesLabel.text = station.vacantPlaces?.stringValue ?? "-"
     cell.bikesAvalialbleLabel.text = station.bikesAvailable?.stringValue ?? "-"
-    cell.distanceLabel.text = String((Int(station.distance ?? 0.0))) + "m" ?? "-"
+    if let distance = station.distance?.integerValue where distance > 0 {
+      cell.distanceLabel.text = String(distance) + "m"
+    } else {
+      cell.distanceLabel.text = "-"
+    }
     
     cell.badge.rates = [station.bikesAvailable.integerValue ?? 0,
       station.vacantPlaces.integerValue ?? 0
@@ -43,6 +48,18 @@ extension StationsListViewController: UITableViewDataSource  {
     
     return cell
   }
+  
+  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    guard let dockStation = self.resultsController.objectAtIndexPath(indexPath) as? DockStation else {return}
+    
+    self.mapClusterController.selectAnnotation(
+      dockStation,
+      andZoomToRegionWithLatitudinalMeters: Constants.ZoomedDistance,
+      longitudinalMeters: Constants.ZoomedDistance
+    )
+    
+  }
+  
   
   func stringForNowSinceDate(date:NSDate) -> String{
     //    let dateComponents = dateCalendar.components([.Minute , .Hour, .Day], fromDate: date)
