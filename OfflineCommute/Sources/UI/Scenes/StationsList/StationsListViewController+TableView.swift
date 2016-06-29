@@ -36,12 +36,19 @@ extension StationsListViewController: UITableViewDataSource, UITableViewDelegate
       cell.distanceLabel.text = "-"
     }
     
-    cell.badge.rates = [station.bikesAvailable.integerValue ?? 0,
+    cell.badge.rates = [
+      station.bikesAvailable.integerValue ?? 0,
       station.vacantPlaces.integerValue ?? 0
     ]
     
-    if (nil != station.updateDate) {
-      cell.updateTimeLabel.text = stringForNowSinceDate(station.updateDate)
+    
+    
+    if let updateDate = station.updateDate {
+      let lastUpdateTimeInterval = Int(abs(updateDate.timeIntervalSinceNow))
+      let maxTime = 5 * 60 * 60
+      let obsoleteness =  CGFloat(min(lastUpdateTimeInterval, maxTime)) / CGFloat(maxTime)
+      cell.badge.obsoleteness = obsoleteness
+      cell.updateTimeLabel.text = stringForNowSinceDate(updateDate)
     } else {
       cell.updateTimeLabel.text = ""
     }
@@ -60,21 +67,21 @@ extension StationsListViewController: UITableViewDataSource, UITableViewDelegate
     
   }
   
-  
   func stringForNowSinceDate(date:NSDate) -> String{
-    //    let dateComponents = dateCalendar.components([.Minute , .Hour, .Day], fromDate: date)
     let dateComponents = dateCalendar.components([.Minute , .Hour, .Day], fromDate: date, toDate: NSDate(), options: .MatchStrictly)
-    var dateString = "Updated:"
+    var dateString = ""
     if dateComponents.day > 0 {
-      dateString += "\(dateComponents.day)d "
+      dateString  += "\(dateComponents.day)"
+    } else {
+      dateString += "\(dateComponents.hour)h \(dateComponents.minute)m "
+      dateString = dateString.stringByReplacingOccurrencesOfString("0h ", withString: "", options: [], range: nil)
+      dateString = dateString.stringByReplacingOccurrencesOfString("0m ", withString: "", options: [], range: nil)
     }
-    if dateComponents.hour > 0 {
-      dateString += "\(dateComponents.hour)h "
+    if dateString.characters.count > 2 {
+      dateString += " ago"
+    } else {
+      dateString = "fresh"
     }
-    if dateComponents.minute > 0 {
-      dateString += "\(dateComponents.minute)m "
-    }
-    dateString += "ago"
     return dateString
   }
 }

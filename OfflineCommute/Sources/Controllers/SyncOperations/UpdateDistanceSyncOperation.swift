@@ -19,6 +19,7 @@ class UpdateDistanceSyncOperation: DataRetrievalOperation, ManagedObjectRetrieva
   init(center:CLLocationCoordinate2D) {
     self.center = center
     super.init()
+    self.force = true
   }
   
   //  override func main() {

@@ -57,6 +57,8 @@ class BadgeView: UIView {
     }
   }
   
+  var obsoleteness:CGFloat = 1.0
+  
   var total:Int?  {
     get {
       var total = 0
@@ -82,7 +84,7 @@ class BadgeView: UIView {
   }
   
   func colorForIndex(index:Int) -> UIColor {
-    return (index % 2 == 0) ? UIColor.redColor() : UIColor.blueColor()
+    return (index % 2 == 0) ? UIColor.redColor().grayscale(0.9 * obsoleteness) : UIColor.blueColor().grayscale(0.9 * obsoleteness)
   }
   
   override func drawRect(rect: CGRect) {

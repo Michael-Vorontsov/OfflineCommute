@@ -34,13 +34,6 @@ extension DockStation: MKAnnotation {
 }
 
 class StationsListViewController: LocalizableViewController, NSFetchedResultsControllerDelegate, UITabBarDelegate {
-
-  lazy var mapClusterController:CCHMapClusterController = {
-    let controller = CCHMapClusterController(mapView:self.mapView)
-    controller.delegate = self
-//    controller.reuseExistingClusterAnnotations = false
-    return controller
-  }()
   
   @IBOutlet weak var mapViewContainer: UIView!
   @IBOutlet weak var tableView: UITableView! {
@@ -56,7 +49,17 @@ class StationsListViewController: LocalizableViewController, NSFetchedResultsCon
     return mapView
     
   }()
+
   
+  lazy var mapClusterController:CCHMapClusterController = {
+    let controller = CCHMapClusterController(mapView:self.mapView)
+    controller.delegate = self
+    if let annotations = self.resultsController.fetchedObjects as? [DockStation] {
+      controller.addAnnotations(annotations, withCompletionHandler: nil)
+    }
+    return controller
+  }()
+
   lazy var locationManager = {
     return CLLocationManager()
   }()
@@ -130,6 +133,7 @@ extension StationsListViewController {
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
     
+    _ = mapClusterController
     mapView.showsUserLocation = true
     showCurrentLocation(self)
     
@@ -155,15 +159,15 @@ extension StationsListViewController {
     let centerLocation = self.currentLocationAnnotation?.coordinate ?? mapView.userLocation.location?.coordinate ?? CLLocationCoordinate2DMake( 51.5085300, -0.1257400)
     
     let netOperation = DockStationsSyncOperation()
-//    let fileOperation = DockStationFileOperation()
+    let fileOperation = DockStationFileOperation()
     let distanceOpeartion = UpdateDistanceSyncOperation(center: centerLocation)
-//    fileOperation.addDependency(netOperation)
+    fileOperation.addDependency(netOperation)
     
     distanceOpeartion.addDependency(netOperation)
-//    distanceOpeartion.addDependency(fileOperation)
+    distanceOpeartion.addDependency(fileOperation)
     
-//    syncManager.addOperations([netOperation, fileOperation, distanceOpeartion]) { (success, results, error) -> Void in
-    syncManager.addOperations([netOperation, distanceOpeartion]) { (success, results, error) -> Void in
+    syncManager.addOperations([netOperation, fileOperation, distanceOpeartion]) { (success, results, error) -> Void in
+//    syncManager.addOperations([netOperation, distanceOpeartion]) { (success, results, error) -> Void in
       print("Data fetching completed")
     }
   }

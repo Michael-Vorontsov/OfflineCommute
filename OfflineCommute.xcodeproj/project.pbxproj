@@ -48,6 +48,7 @@
 		D0D283671D217D0000C2958A /* StationsListViewController+MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D283661D217D0000C2958A /* StationsListViewController+MapView.swift */; };
 		D0D283691D217D9800C2958A /* StationsListViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D283681D217D9800C2958A /* StationsListViewController+TableView.swift */; };
 		D0D2836B1D218DBC00C2958A /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D2836A1D218DBC00C2958A /* BadgeView.swift */; };
+		D0D2836D1D242BE600C2958A /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D2836C1D242BE600C2958A /* UIColor+Extensions.swift */; };
 		D0DB41E51CEBD8730036AE8A /* OCOperationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DB41E41CEBD8730036AE8A /* OCOperationManager.swift */; };
 		D0DB41E71CEBE00F0036AE8A /* bikepoints.json in Resources */ = {isa = PBXBuildFile; fileRef = D0DB41E61CEBE00F0036AE8A /* bikepoints.json */; };
 		D0DB41E91CEC67E50036AE8A /* RouteTrackingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DB41E81CEC67E50036AE8A /* RouteTrackingController.swift */; };
@@ -118,6 +119,7 @@
 		D0D283661D217D0000C2958A /* StationsListViewController+MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StationsListViewController+MapView.swift"; sourceTree = "<group>"; };
 		D0D283681D217D9800C2958A /* StationsListViewController+TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StationsListViewController+TableView.swift"; sourceTree = "<group>"; };
 		D0D2836A1D218DBC00C2958A /* BadgeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
+		D0D2836C1D242BE600C2958A /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		D0DB41E41CEBD8730036AE8A /* OCOperationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCOperationManager.swift; sourceTree = "<group>"; };
 		D0DB41E61CEBE00F0036AE8A /* bikepoints.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bikepoints.json; sourceTree = "<group>"; };
 		D0DB41E81CEC67E50036AE8A /* RouteTrackingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteTrackingController.swift; sourceTree = "<group>"; };
@@ -366,6 +368,7 @@
 			isa = PBXGroup;
 			children = (
 				D0C03E0B1C82021F00EF9A95 /* NSManagedObject+Extension.swift */,
+				D0D2836C1D242BE600C2958A /* UIColor+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -652,6 +655,7 @@
 				D0C03DEC1C81E7F800EF9A95 /* DockStation.swift in Sources */,
 				D0C23AAC1CEB145C00AF7023 /* ObjectBuilder.swift in Sources */,
 				D0C23AAA1CEB145C00AF7023 /* CoreDataManager.swift in Sources */,
+				D0D2836D1D242BE600C2958A /* UIColor+Extensions.swift in Sources */,
 				D0C23AAD1CEB145C00AF7023 /* AccessKeyOperationProtocol.swift in Sources */,
 				D0C23AB71CEB145C00AF7023 /* NetCacheDataRetrievalOperation.swift in Sources */,
 				D0DB41EC1CEC6B570036AE8A /* Waypoint+CoreDataProperties.swift in Sources */,
