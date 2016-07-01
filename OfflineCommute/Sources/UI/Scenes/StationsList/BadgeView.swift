@@ -31,7 +31,14 @@ class BadgeAnnotationView: MKAnnotationView {
     super.init(coder: aDecoder)
   }
   
-  
+  var obsoleteness:CGFloat {
+    set {
+      self.badge.obsoleteness = newValue
+    }
+    get {
+      return self.badge.obsoleteness
+    }
+  }
   
   var rates:[Int]? {
     set {
@@ -57,7 +64,11 @@ class BadgeView: UIView {
     }
   }
   
-  var obsoleteness:CGFloat = 1.0
+  var obsoleteness:CGFloat = 1.0 {
+    didSet {
+      self.setNeedsDisplay()
+    }
+  }
   
   var total:Int?  {
     get {
@@ -84,7 +95,7 @@ class BadgeView: UIView {
   }
   
   func colorForIndex(index:Int) -> UIColor {
-    return (index % 2 == 0) ? UIColor.redColor().grayscale(0.9 * obsoleteness) : UIColor.blueColor().grayscale(0.9 * obsoleteness)
+    return (index % 2 == 0) ? UIColor.redColor().grayscale(obsoleteness) : UIColor.blueColor().grayscale(obsoleteness)
   }
   
   override func drawRect(rect: CGRect) {

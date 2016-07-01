@@ -8,35 +8,30 @@
 
 import UIKit
 
+private let consts = (
+  red : 0.299 as CGFloat,
+  green : 0.587 as CGFloat,
+  blue : 0.114 as CGFloat
+)
+
 extension UIColor {
-//  func grayscale() -> UIColor {
-//
-//    var red: CGFloat = 0
-//    var green: CGFloat = 0
-//    var blue: CGFloat = 0
-//    var alpha: CGFloat = 0
-//    
-//    
-//    
-//    if getRed(&red, green: &green, blue: &blue, alpha: &alpha) {
-//      return UIColor(white: 0.299 * red + 0.587 * green + 0.114 * blue, alpha: alpha)
-//    }
-//    return self
-//    
-//  }
   
-  func grayscale(scale:CGFloat = 1.0) -> UIColor {
+  func grayscale(scale:CGFloat) -> UIColor {
     
-    var hue: CGFloat = 0
-    var saturation: CGFloat = 0
-    var brightenes: CGFloat = 0
+    var red: CGFloat = 0
+    var green: CGFloat = 0
+    var blue: CGFloat = 0
     var alpha: CGFloat = 0
     
-    if getHue(&hue, saturation: &saturation, brightness: &brightenes, alpha: &alpha) {
-      return UIColor(hue: hue, saturation: saturation * (1.0 - scale), brightness: brightenes, alpha: alpha)
-    }
+    getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+    let grayness = consts.red * red + consts.green * green + consts.blue * blue
     
-    return self
+    red   = red   * (1 - scale) + grayness * scale
+    green = green * (1 - scale) + grayness * scale
+    blue  = blue  * (1 - scale) + grayness * scale
+    alpha *= 1.0 - (0.5 * scale)
+    
+    return UIColor(red: red, green: green, blue: blue, alpha: alpha)
     
   }
 

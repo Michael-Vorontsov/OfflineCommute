@@ -41,8 +41,6 @@ extension StationsListViewController: UITableViewDataSource, UITableViewDelegate
       station.vacantPlaces.integerValue ?? 0
     ]
     
-    
-    
     if let updateDate = station.updateDate {
       let lastUpdateTimeInterval = Int(abs(updateDate.timeIntervalSinceNow))
       let maxTime = 5 * 60 * 60
@@ -71,17 +69,19 @@ extension StationsListViewController: UITableViewDataSource, UITableViewDelegate
     let dateComponents = dateCalendar.components([.Minute , .Hour, .Day], fromDate: date, toDate: NSDate(), options: .MatchStrictly)
     var dateString = ""
     if dateComponents.day > 0 {
-      dateString  += "\(dateComponents.day)"
+      dateString  += "\(dateComponents.day) days"
     } else {
       dateString += "\(dateComponents.hour)h \(dateComponents.minute)m "
       dateString = dateString.stringByReplacingOccurrencesOfString("0h ", withString: "", options: [], range: nil)
       dateString = dateString.stringByReplacingOccurrencesOfString("0m ", withString: "", options: [], range: nil)
     }
-    if dateString.characters.count > 2 {
+    
+    if dateString.characters.count > 1 {
       dateString += " ago"
     } else {
       dateString = "fresh"
     }
+    
     return dateString
   }
 }

@@ -44,6 +44,16 @@ extension StationsListViewController: CCHMapClusterControllerDelegate {
         let bikesCount = dockAnnotation.bikesAvailable?.integerValue ?? 0
         let dockCount = dockAnnotation.vacantPlaces?.integerValue ?? 0
         badgeView.rates = [bikesCount, dockCount]
+        
+        if let updateDate = dockAnnotation.updateDate {
+          let lastUpdateTimeInterval = Int(abs(updateDate.timeIntervalSinceNow))
+          let maxTime = 5 * 60 * 60
+          let obsoleteness =  CGFloat(min(lastUpdateTimeInterval, maxTime)) / CGFloat(maxTime)
+          badgeView.obsoleteness = obsoleteness
+        } else {
+          badgeView.obsoleteness = 1.0
+        }
+        
       }
     }
     
