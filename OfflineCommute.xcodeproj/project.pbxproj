@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8C7E9DE3C9851CBFC76CBFAC /* Pods_OfflineCommute.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8604B4E3CB739DE246A3349E /* Pods_OfflineCommute.framework */; };
+		D0AB8B0B1D3025D3005F4B94 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AB8B0A1D3025D3005F4B94 /* RootViewController.swift */; };
 		D0C03DC21C81E59000EF9A95 /* OfflineCommuteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C03DC11C81E59000EF9A95 /* OfflineCommuteTests.swift */; };
 		D0C03DDF1C81E62100EF9A95 /* OfflineCommute.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0C03DCE1C81E62100EF9A95 /* OfflineCommute.xcdatamodeld */; };
 		D0C03DE01C81E62100EF9A95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0C03DD11C81E62100EF9A95 /* Assets.xcassets */; };
@@ -73,6 +74,7 @@
 		0E6C959A2CCB11AC82EB09B6 /* Pods-OfflineCommute.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OfflineCommute.release.xcconfig"; path = "Pods/Target Support Files/Pods-OfflineCommute/Pods-OfflineCommute.release.xcconfig"; sourceTree = "<group>"; };
 		8604B4E3CB739DE246A3349E /* Pods_OfflineCommute.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OfflineCommute.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A735EC79848B1F82B338A253 /* Pods-OfflineCommute.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OfflineCommute.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OfflineCommute/Pods-OfflineCommute.debug.xcconfig"; sourceTree = "<group>"; };
+		D0AB8B0A1D3025D3005F4B94 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		D0C03DA61C81E58F00EF9A95 /* OfflineCommute.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OfflineCommute.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0C03DBD1C81E59000EF9A95 /* OfflineCommuteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OfflineCommuteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0C03DC11C81E59000EF9A95 /* OfflineCommuteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineCommuteTests.swift; sourceTree = "<group>"; };
@@ -164,6 +166,14 @@
 				0E6C959A2CCB11AC82EB09B6 /* Pods-OfflineCommute.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		D0AB8B051D302546005F4B94 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				D0AB8B0A1D3025D3005F4B94 /* RootViewController.swift */,
+			);
+			path = Root;
 			sourceTree = "<group>";
 		};
 		D0C03D9D1C81E58F00EF9A95 = {
@@ -294,6 +304,7 @@
 		D0C03DDC1C81E62100EF9A95 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				D0AB8B051D302546005F4B94 /* Root */,
 				D0C03E021C81EA6200EF9A95 /* LocalizableViewController.swift */,
 				D0C03E011C81EA2800EF9A95 /* General */,
 				D0C03DDD1C81E62100EF9A95 /* Scenes */,
@@ -652,6 +663,7 @@
 				D0DB41E51CEBD8730036AE8A /* OCOperationManager.swift in Sources */,
 				D0D283671D217D0000C2958A /* StationsListViewController+MapView.swift in Sources */,
 				D0C03DDF1C81E62100EF9A95 /* OfflineCommute.xcdatamodeld in Sources */,
+				D0AB8B0B1D3025D3005F4B94 /* RootViewController.swift in Sources */,
 				D0C03DEC1C81E7F800EF9A95 /* DockStation.swift in Sources */,
 				D0C23AAC1CEB145C00AF7023 /* ObjectBuilder.swift in Sources */,
 				D0C23AAA1CEB145C00AF7023 /* CoreDataManager.swift in Sources */,
