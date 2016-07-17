@@ -38,9 +38,10 @@ extension ObjectBuilder {
      
       // Clear old data
       
-      if let oldDocks = ((try? context.executeFetchRequest(NSFetchRequest(entityName: "DockStation"))) as? [NSManagedObject]) where oldDocks.count > 0 {
-        context.deleteObjects(oldDocks)
-      }
+//      if let oldDocks = ((try? context.executeFetchRequest(NSFetchRequest(entityName: "DockStation"))) as? [NSManagedObject]) where oldDocks.count > 0 {
+//        context.deleteObjects(oldDocks)
+//      }
+      let oldDocks = ((try? context.executeFetchRequest(NSFetchRequest(entityName: "DockStation"))) as? [DockStation])
       
       let formatter = NSDateFormatter()
       //2016-02-27T19:39:34.263
@@ -48,16 +49,25 @@ extension ObjectBuilder {
       
       for dockStationData in dataInfo {
         
+        
+        
         guard let name = dockStationData[Constants.nameKey] as? String,
           //          let typeString = dockStationData[Constants.typeKey] as? String,
           let serverID = dockStationData[Constants.serverIDKey] as? String,
           let latitude = dockStationData[Constants.latitudeKey] as? Double,
           let longitude = dockStationData[Constants.longitudeKey] as? Double,
-          let additional = dockStationData[Constants.additonalPropertiesKey] as? [NSDictionary],
-          let dockStation = NSEntityDescription.insertNewObjectForEntityForName("DockStation", inManagedObjectContext: context) as? DockStation
-          else {
-            break
+          let additional = dockStationData[Constants.additonalPropertiesKey] as? [NSDictionary] else {
+            break;
         }
+        
+//        let predicate = NSPredicate(format: "name = %@", name)
+//        oldD
+      let dockStation = oldDocks?.filter({ (element) -> Bool in
+        return element.title == name
+      }).last ?? NSEntityDescription.insertNewObjectForEntityForName("DockStation", inManagedObjectContext: context) as! DockStation
+//      else {
+//        break
+
         //      print("\(typeString)")
         
         results.append(dockStation.objectID)

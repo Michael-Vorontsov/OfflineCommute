@@ -24,7 +24,6 @@ class BadgeAnnotationView: MKAnnotationView {
   override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
     super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
     frame = CGRectMake(0, 0, 30, 30)
-    
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -66,7 +65,7 @@ class BadgeView: UIView {
   
   var obsoleteness:CGFloat = 1.0 {
     didSet {
-      self.setNeedsDisplay()
+      setNeedsDisplay()
     }
   }
   

@@ -124,7 +124,7 @@ extension StationsListViewController {
     mapView.setUserTrackingMode(.FollowWithHeading, animated: false)
 
 // Comment/Uncomment below to toggle cachable map tiles
-//    newMapView.addOverlay(overlay, level: .AboveLabels)
+    newMapView.addOverlay(overlay, level: .AboveLabels)
     
     mapViewContainer.addSubview(newMapView)
     
@@ -222,22 +222,17 @@ extension StationsListViewController {
     case .Insert:
       tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Left)
       mapClusterController.addAnnotations([anObject], withCompletionHandler: nil)
-//      mapView.addAnnotation(anObject)
     case .Delete:
       tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Left)
       mapClusterController.removeAnnotations([anObject], withCompletionHandler: nil)
-
-//      mapView.removeAnnotation(anObject)
     case  .Move:
       tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Left)
       tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Left)
-    case .Update: break
-//      tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-//      tableView.insertRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-//      mapClusterController.removeAnnotations([anObject], withCompletionHandler: nil)
-//      mapClusterController.addAnnotations([anObject], withCompletionHandler: nil)
-//      mapView.removeAnnotation(anObject)
-//      mapView.addAnnotation(anObject)
+    case .Update: 
+      tableView.reloadRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
+      if let annotatioView = mapView.viewForAnnotation(anObject) {
+        configureAnnotationView(annotatioView, forAnnotation: anObject)
+      }
     }
   }
 }

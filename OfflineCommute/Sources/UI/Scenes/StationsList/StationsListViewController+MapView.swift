@@ -96,7 +96,6 @@ extension StationsListViewController: MKMapViewDelegate {
   
   func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
     
-    
     guard let clusterAnnotation = annotation as? CCHMapClusterAnnotation else { return nil}
     if  clusterAnnotation.isCluster() {
       let clusterView = mapView.dequeueReusableAnnotationViewWithIdentifier(Constants.clusterViewReuseID) as? OCClusterAnotationView
@@ -107,17 +106,25 @@ extension StationsListViewController: MKMapViewDelegate {
     
     let annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(Constants.pinViewReuseID) as? BadgeAnnotationView
       ?? BadgeAnnotationView(annotation: clusterAnnotation, reuseIdentifier: Constants.pinViewReuseID)
-    
-    guard let dockAnnotation = clusterAnnotation.annotations.first as? DockStation ?? annotation as? DockStation else { return nil}
-    
+
     annotationView.canShowCallout = true
-    
-    let bikesCount = dockAnnotation.bikesAvailable?.integerValue ?? 0
-    let dockCount = dockAnnotation.vacantPlaces?.integerValue ?? 0
-    
-    annotationView.rates = [bikesCount, dockCount]
+    configureAnnotationView(annotationView, forAnnotation: annotation)
 
     return annotationView
+  }
+  
+  func configureAnnotationView(view:MKAnnotationView, forAnnotation annotation:MKAnnotation) {
+
+    view.canShowCallout = true
+    
+    guard let view = view as? BadgeAnnotationView, let annotation = annotation as? DockStation else {
+      return
+    }
+    
+    let bikesCount = annotation.bikesAvailable?.integerValue ?? 0
+    let dockCount = annotation.vacantPlaces?.integerValue ?? 0
+    
+    view.rates = [bikesCount, dockCount]
   }
 
 // Animate selected annotation view
