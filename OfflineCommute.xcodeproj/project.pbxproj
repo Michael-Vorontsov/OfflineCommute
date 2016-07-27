@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		8C7E9DE3C9851CBFC76CBFAC /* Pods_OfflineCommute.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8604B4E3CB739DE246A3349E /* Pods_OfflineCommute.framework */; };
+		D077580E1D475EEC004F6265 /* RouteTrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D077580D1D475EEC004F6265 /* RouteTrackingViewController.swift */; };
+		D07758111D476038004F6265 /* UIViewController+MapViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07758101D476038004F6265 /* UIViewController+MapViewContainer.swift */; };
 		D0AB8B0B1D3025D3005F4B94 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AB8B0A1D3025D3005F4B94 /* RootViewController.swift */; };
 		D0C03DC21C81E59000EF9A95 /* OfflineCommuteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C03DC11C81E59000EF9A95 /* OfflineCommuteTests.swift */; };
 		D0C03DDF1C81E62100EF9A95 /* OfflineCommute.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0C03DCE1C81E62100EF9A95 /* OfflineCommute.xcdatamodeld */; };
@@ -74,6 +76,8 @@
 		0E6C959A2CCB11AC82EB09B6 /* Pods-OfflineCommute.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OfflineCommute.release.xcconfig"; path = "Pods/Target Support Files/Pods-OfflineCommute/Pods-OfflineCommute.release.xcconfig"; sourceTree = "<group>"; };
 		8604B4E3CB739DE246A3349E /* Pods_OfflineCommute.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OfflineCommute.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A735EC79848B1F82B338A253 /* Pods-OfflineCommute.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OfflineCommute.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OfflineCommute/Pods-OfflineCommute.debug.xcconfig"; sourceTree = "<group>"; };
+		D077580D1D475EEC004F6265 /* RouteTrackingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteTrackingViewController.swift; sourceTree = "<group>"; };
+		D07758101D476038004F6265 /* UIViewController+MapViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+MapViewContainer.swift"; sourceTree = "<group>"; };
 		D0AB8B0A1D3025D3005F4B94 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		D0C03DA61C81E58F00EF9A95 /* OfflineCommute.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OfflineCommute.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0C03DBD1C81E59000EF9A95 /* OfflineCommuteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OfflineCommuteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -166,6 +170,22 @@
 				0E6C959A2CCB11AC82EB09B6 /* Pods-OfflineCommute.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		D077580C1D475EAE004F6265 /* RouteTracking */ = {
+			isa = PBXGroup;
+			children = (
+				D077580D1D475EEC004F6265 /* RouteTrackingViewController.swift */,
+			);
+			path = RouteTracking;
+			sourceTree = "<group>";
+		};
+		D077580F1D476014004F6265 /* UIExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				D07758101D476038004F6265 /* UIViewController+MapViewContainer.swift */,
+			);
+			path = UIExtensions;
 			sourceTree = "<group>";
 		};
 		D0AB8B051D302546005F4B94 /* Root */ = {
@@ -315,6 +335,7 @@
 		D0C03DDD1C81E62100EF9A95 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				D077580C1D475EAE004F6265 /* RouteTracking */,
 				D0C03DED1C81E85D00EF9A95 /* StationsList */,
 			);
 			path = Scenes;
@@ -395,6 +416,7 @@
 		D0C03E011C81EA2800EF9A95 /* General */ = {
 			isa = PBXGroup;
 			children = (
+				D077580F1D476014004F6265 /* UIExtensions */,
 			);
 			name = General;
 			sourceTree = "<group>";
@@ -648,6 +670,7 @@
 				D0DB41ED1CEC6B570036AE8A /* Waypoint.swift in Sources */,
 				D0C23AAE1CEB145C00AF7023 /* DataRetrievalOperationProtocol.swift in Sources */,
 				D0C03DE51C81E62100EF9A95 /* StationsListViewController.swift in Sources */,
+				D077580E1D475EEC004F6265 /* RouteTrackingViewController.swift in Sources */,
 				D0C03E051C81EE8300EF9A95 /* DockStationCell.swift in Sources */,
 				D0C03E031C81EA6200EF9A95 /* LocalizableViewController.swift in Sources */,
 				D0C23AB61CEB145C00AF7023 /* ImageNetworkOperation.swift in Sources */,
@@ -669,6 +692,7 @@
 				D0C23AAA1CEB145C00AF7023 /* CoreDataManager.swift in Sources */,
 				D0D2836D1D242BE600C2958A /* UIColor+Extensions.swift in Sources */,
 				D0C23AAD1CEB145C00AF7023 /* AccessKeyOperationProtocol.swift in Sources */,
+				D07758111D476038004F6265 /* UIViewController+MapViewContainer.swift in Sources */,
 				D0C23AB71CEB145C00AF7023 /* NetCacheDataRetrievalOperation.swift in Sources */,
 				D0DB41EC1CEC6B570036AE8A /* Waypoint+CoreDataProperties.swift in Sources */,
 				D0DB41F61CEDC2410036AE8A /* DockStationFileOperation.swift in Sources */,

@@ -18,6 +18,29 @@ enum DockStationMode: Int {
   }
 }
 
+extension UINavigationController {
+  /**
+   Switch to view controller by poping if it stack or by pushing otherwise.
+   
+   - parameter controller: controller to switch
+   - parameter animated:   animate if true
+   
+   - returns: true if switched, false otherwise (usually it it is already on screen)
+   */
+  func switchToController(controller: UIViewController, animated:Bool = true) -> Bool {
+    guard controller != topViewController else {
+      return false
+    }
+    
+    if viewControllers.contains(controller) {
+      popToViewController(controller, animated: animated)
+    } else {
+      pushViewController(controller, animated: animated)
+    }
+    return true
+  }
+}
+
 class RootViewController: UIViewController, UITabBarDelegate {
   
   @IBOutlet weak var tabView: UITabBar!
@@ -29,13 +52,36 @@ class RootViewController: UIViewController, UITabBarDelegate {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    dockLocatorButton.title = ".list".localized();
-  }
+    dockLocatorButton.title = ".docStation".localized();
+    subNavController.switchToController(stationListController, animated: false)
+    dockLocatorButton.badgeValue = titleForDockStationMode(dockStationsMode)
+}
   
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
+    subNavController.viewControllers = [subNavController.topViewController!]
+    switch subNavController.topViewController {
+    case stationListController?:
+      routeTrackingController = nil
+    case routeTrackingController?:
+      stationListController = nil
+    default: break
+    }
+    
+    
     // Dispose of any resources that can be recreated.
   }
+  
+  private lazy var stationListController:UIViewController! = {
+    let controller = self.storyboard?.instantiateViewControllerWithIdentifier("stationListID") as? StationsListViewController
+//    let controller = self.storyboard?.instantiateViewControllerWithIdentifier("emptySceneID")
+    return controller
+  }()
+  
+  private lazy var routeTrackingController:UIViewController! = {
+    let controller = self.storyboard?.instantiateViewControllerWithIdentifier("emptySceneID")
+    return controller
+  }()
   
   func titleForDockStationMode(mode:DockStationMode) -> String {
     switch dockStationsMode {
@@ -52,9 +98,8 @@ class RootViewController: UIViewController, UITabBarDelegate {
   }
   
   func swithcDockStationModeTouched(item:UITabBarItem) {
-    item.badgeValue = titleForDockStationMode(dockStationsMode)
     dockStationsMode = dockStationsMode.next()
-    item.title = titleForDockStationMode(dockStationsMode)
+    item.badgeValue = titleForDockStationMode(dockStationsMode)
     
     guard let stationController = subNavController.topViewController as? StationsListViewController else {return}
     switch dockStationsMode {
@@ -68,7 +113,11 @@ class RootViewController: UIViewController, UITabBarDelegate {
   func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
     
     if item == dockLocatorButton {
-      swithcDockStationModeTouched(item)
+      if !subNavController.switchToController(stationListController) {
+        swithcDockStationModeTouched(item)
+      }
+    } else {
+      subNavController.switchToController(routeTrackingController)
     }
     
   }

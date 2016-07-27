@@ -33,26 +33,24 @@ extension DockStation: MKAnnotation {
   
 }
 
-class StationsListViewController: LocalizableViewController, NSFetchedResultsControllerDelegate, UITabBarDelegate {
+class StationsListViewController: LocalizableViewController, NSFetchedResultsControllerDelegate, UITabBarDelegate, MapContainerController {
   
   @IBOutlet weak var mapViewContainer: UIView!
+  
   @IBOutlet weak var tableView: UITableView! {
     didSet {
       tableView.tableFooterView = UIView()
     }
   }
   
-  lazy var mapView:MKMapView = {
-    let mapView = MKMapView(frame: self.mapViewContainer.bounds)
-    mapView.autoresizingMask = [.FlexibleHeight, .FlexibleWidth]
-    mapView.delegate = self
-    return mapView
-    
+  lazy var mapView:MKMapView! = {
+    self.setupMapView()
+    return self.mapView
   }()
-
   
-  lazy var mapClusterController:CCHMapClusterController = {
-    let controller = CCHMapClusterController(mapView:self.mapView)
+  lazy var mapClusterController:CCHMapClusterController! = {
+    guard let mapView = self.mapView else {return nil}
+    let controller = CCHMapClusterController(mapView:mapView)
     controller.delegate = self
     if let annotations = self.resultsController.fetchedObjects as? [DockStation] {
       controller.addAnnotations(annotations, withCompletionHandler: nil)
@@ -114,19 +112,8 @@ extension StationsListViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-
-    
-    let template = "http://tile.openstreetmap.org/{z}/{x}/{y}.png";
-    let overlay = OCCachableTileOverlay(URLTemplate: template)
-    overlay.canReplaceMapContent = true
-    
-    let newMapView = self.mapView
-    mapView.setUserTrackingMode(.FollowWithHeading, animated: false)
-
-// Comment/Uncomment below to toggle cachable map tiles
-    newMapView.addOverlay(overlay, level: .AboveLabels)
-    
-    mapViewContainer.addSubview(newMapView)
+//    setupMapView()
+//
     
   }
   
@@ -140,9 +127,6 @@ extension StationsListViewController {
   }
   
   override func viewDidAppear(animated: Bool) {
-//    let manager = CLLocationManager()
-//    manager.requestWhenInUseAuthorization()
-//    locationManager = manager
     locationManager.requestWhenInUseAuthorization()
 
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(0.2 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) { () -> Void in
@@ -182,7 +166,6 @@ extension StationsListViewController {
   }
 
   @IBAction func switchToMap() {
-    self.mapView.hidden = false
     UIView.animateWithDuration(Constants.animationDuration, animations: { () -> Void in
         self.tableView.alpha = 0.0
       }) { (completed) -> Void in
