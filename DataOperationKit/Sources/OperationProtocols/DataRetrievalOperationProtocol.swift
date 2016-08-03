@@ -33,6 +33,7 @@ public enum DataRetrievalOperationError: ErrorType {
   case InvalidParameter(parameterName:String?)
   case ServerResponse(errorCode:Int, errorResponse:NSHTTPURLResponse, responseData:NSData?)
   case InvalidDataForKey(key:String, value:AnyObject?)
+  case NoData
 //  case NetworkConnectionError(error:NSError?)
   case NetworkError(error:NSError?)
   case CoreDataError(error:NSError?)

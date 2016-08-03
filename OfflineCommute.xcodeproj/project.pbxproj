@@ -10,7 +10,11 @@
 		8C7E9DE3C9851CBFC76CBFAC /* Pods_OfflineCommute.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8604B4E3CB739DE246A3349E /* Pods_OfflineCommute.framework */; };
 		D077580E1D475EEC004F6265 /* RouteTrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D077580D1D475EEC004F6265 /* RouteTrackingViewController.swift */; };
 		D07758111D476038004F6265 /* UIViewController+MapViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07758101D476038004F6265 /* UIViewController+MapViewContainer.swift */; };
+		D0AB01631D48C9EB002A67A5 /* TilesCacheDataRetrievalOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AB01621D48C9EB002A67A5 /* TilesCacheDataRetrievalOperation.swift */; };
+		D0AB01651D48CB60002A67A5 /* GroupDataRetrievalOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AB01641D48CB60002A67A5 /* GroupDataRetrievalOperation.swift */; };
+		D0AB01671D48CBC5002A67A5 /* GroupDataRetrievalOperationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AB01661D48CBC5002A67A5 /* GroupDataRetrievalOperationProtocol.swift */; };
 		D0AB8B0B1D3025D3005F4B94 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AB8B0A1D3025D3005F4B94 /* RootViewController.swift */; };
+		D0B400581D51F07D00ED238F /* CacheTilesGroupOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B400571D51F07D00ED238F /* CacheTilesGroupOperation.swift */; };
 		D0C03DC21C81E59000EF9A95 /* OfflineCommuteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C03DC11C81E59000EF9A95 /* OfflineCommuteTests.swift */; };
 		D0C03DDF1C81E62100EF9A95 /* OfflineCommute.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0C03DCE1C81E62100EF9A95 /* OfflineCommute.xcdatamodeld */; };
 		D0C03DE01C81E62100EF9A95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0C03DD11C81E62100EF9A95 /* Assets.xcassets */; };
@@ -78,7 +82,11 @@
 		A735EC79848B1F82B338A253 /* Pods-OfflineCommute.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OfflineCommute.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OfflineCommute/Pods-OfflineCommute.debug.xcconfig"; sourceTree = "<group>"; };
 		D077580D1D475EEC004F6265 /* RouteTrackingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteTrackingViewController.swift; sourceTree = "<group>"; };
 		D07758101D476038004F6265 /* UIViewController+MapViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+MapViewContainer.swift"; sourceTree = "<group>"; };
+		D0AB01621D48C9EB002A67A5 /* TilesCacheDataRetrievalOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TilesCacheDataRetrievalOperation.swift; sourceTree = "<group>"; };
+		D0AB01641D48CB60002A67A5 /* GroupDataRetrievalOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupDataRetrievalOperation.swift; sourceTree = "<group>"; };
+		D0AB01661D48CBC5002A67A5 /* GroupDataRetrievalOperationProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupDataRetrievalOperationProtocol.swift; sourceTree = "<group>"; };
 		D0AB8B0A1D3025D3005F4B94 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		D0B400571D51F07D00ED238F /* CacheTilesGroupOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheTilesGroupOperation.swift; sourceTree = "<group>"; };
 		D0C03DA61C81E58F00EF9A95 /* OfflineCommute.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OfflineCommute.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0C03DBD1C81E59000EF9A95 /* OfflineCommuteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OfflineCommuteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0C03DC11C81E59000EF9A95 /* OfflineCommuteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineCommuteTests.swift; sourceTree = "<group>"; };
@@ -381,6 +389,8 @@
 				D0C03E061C81F05800EF9A95 /* DockStationsSyncOperation.swift */,
 				D0C03E0E1C825A1800EF9A95 /* UpdateDistanceSyncOperation.swift */,
 				D0DB41F51CEDC2410036AE8A /* DockStationFileOperation.swift */,
+				D0AB01621D48C9EB002A67A5 /* TilesCacheDataRetrievalOperation.swift */,
+				D0B400571D51F07D00ED238F /* CacheTilesGroupOperation.swift */,
 			);
 			path = SyncOperations;
 			sourceTree = "<group>";
@@ -460,6 +470,7 @@
 				D0C23A9B1CEB145C00AF7023 /* ManagedObjectRetrievalOperationProtocol.swift */,
 				D0C23A9C1CEB145C00AF7023 /* NetworkDataRetrievalOperationProtocol.swift */,
 				D0C23A9D1CEB145C00AF7023 /* ObjectBuildeOperationProtocol.swift */,
+				D0AB01661D48CBC5002A67A5 /* GroupDataRetrievalOperationProtocol.swift */,
 			);
 			path = OperationProtocols;
 			sourceTree = "<group>";
@@ -473,6 +484,7 @@
 				D0C23AA31CEB145C00AF7023 /* ImageNetworkOperation.swift */,
 				D0C23AA41CEB145C00AF7023 /* NetCacheDataRetrievalOperation.swift */,
 				D0C23AA51CEB145C00AF7023 /* NetworkDataRetrievalOperation.swift */,
+				D0AB01641D48CB60002A67A5 /* GroupDataRetrievalOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -669,6 +681,8 @@
 				D0D283691D217D9800C2958A /* StationsListViewController+TableView.swift in Sources */,
 				D0DB41ED1CEC6B570036AE8A /* Waypoint.swift in Sources */,
 				D0C23AAE1CEB145C00AF7023 /* DataRetrievalOperationProtocol.swift in Sources */,
+				D0AB01671D48CBC5002A67A5 /* GroupDataRetrievalOperationProtocol.swift in Sources */,
+				D0B400581D51F07D00ED238F /* CacheTilesGroupOperation.swift in Sources */,
 				D0C03DE51C81E62100EF9A95 /* StationsListViewController.swift in Sources */,
 				D077580E1D475EEC004F6265 /* RouteTrackingViewController.swift in Sources */,
 				D0C03E051C81EE8300EF9A95 /* DockStationCell.swift in Sources */,
@@ -689,6 +703,7 @@
 				D0AB8B0B1D3025D3005F4B94 /* RootViewController.swift in Sources */,
 				D0C03DEC1C81E7F800EF9A95 /* DockStation.swift in Sources */,
 				D0C23AAC1CEB145C00AF7023 /* ObjectBuilder.swift in Sources */,
+				D0AB01651D48CB60002A67A5 /* GroupDataRetrievalOperation.swift in Sources */,
 				D0C23AAA1CEB145C00AF7023 /* CoreDataManager.swift in Sources */,
 				D0D2836D1D242BE600C2958A /* UIColor+Extensions.swift in Sources */,
 				D0C23AAD1CEB145C00AF7023 /* AccessKeyOperationProtocol.swift in Sources */,
@@ -700,6 +715,7 @@
 				D0D283621D21784A00C2958A /* OCClusterAnnotationView.swift in Sources */,
 				D0DB41F41CEDC0210036AE8A /* OCObjectBuilder+DockStation.swift in Sources */,
 				D0C23AB81CEB145C00AF7023 /* NetworkDataRetrievalOperation.swift in Sources */,
+				D0AB01631D48C9EB002A67A5 /* TilesCacheDataRetrievalOperation.swift in Sources */,
 				D0C03DF81C81E9D400EF9A95 /* GeocodingSyncOperation.swift in Sources */,
 				D0D283651D21789900C2958A /* OCCachableTileOverlay.swift in Sources */,
 				D0C23AAB1CEB145C00AF7023 /* DataRetrievalOperationManager.swift in Sources */,

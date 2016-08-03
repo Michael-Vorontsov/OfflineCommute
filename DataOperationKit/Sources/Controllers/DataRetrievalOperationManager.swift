@@ -143,8 +143,12 @@ public class DataRetrievalOperationManager: NSObject {
       operation.requestParameters[Consts.accessKeyParam] = accessKey
     }
     
-    if let operation = operation as? ObjectBuildeOperationProtocol where nil == operation.objectBuilder{
+    if let operation = operation as? ObjectBuildeOperationProtocol where nil == operation.objectBuilder {
       operation.objectBuilder = self.objectBuilder
+    }
+    
+    if let operation = operation as? GroupDataRetrievalOperationProtocol where nil == operation.operationManager {
+      operation.operationManager = self
     }
     
   }
