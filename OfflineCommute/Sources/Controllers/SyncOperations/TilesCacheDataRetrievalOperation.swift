@@ -6,27 +6,25 @@
 //  Copyright © 2016 Mykhailo Vorontsov. All rights reserved.
 //
 
-//http:||tile.openstreetmap.org|16|32747|21794.png"
-
 private struct Constants {
-  static let opentStreetMapRequetFormat = "http://tile.openstreetmap.org/%ld/%ld/%ld.png"
-  //    return NSURL(string: NSString(format: , path.z, path.x, path.y) as String)!
+  static let openStreetMapRequestFormat = "http://tile.openstreetmap.org/%ld/%ld/%ld.png"
 }
 
 import UIKit
 
-
 class TilesCacheDataRetrievalOperation: NetworkDataRetrievalOperation {
-
+  
+  private var downloadLocation: NSURL? = nil
   private let coordinate:(x:Int, y:Int, z:Int)
   
-  init(x:Int, y:Int, z:Int) {
+  init(x:Int, y:Int, z:Int, directory:NSURL? = nil) {
     coordinate = (x,y,z)
+    downloadLocation = directory
     super.init()
   }
   
   override func prepareForRetrieval() throws {
-    requestEndPoint = NSString(format: Constants.opentStreetMapRequetFormat, coordinate.z, coordinate.x, coordinate.y) as String
+    requestEndPoint = NSString(format: Constants.openStreetMapRequestFormat, coordinate.z, coordinate.x, coordinate.y) as String
     try super.prepareForRetrieval()
   }
   
@@ -36,8 +34,8 @@ class TilesCacheDataRetrievalOperation: NetworkDataRetrievalOperation {
     }
 
     let fileName = requestEndPoint!.stringByReplacingOccurrencesOfString("/", withString: "|")
-    
-    let cacheFilePath = NSFileManager.applicationCachesDirectory.URLByAppendingPathComponent(fileName)
+    let directoryLocation = downloadLocation ?? NSFileManager.applicationCachesDirectory
+    let cacheFilePath = directoryLocation.URLByAppendingPathComponent(fileName)
     data.writeToURL(cacheFilePath, atomically: true)
     
   }

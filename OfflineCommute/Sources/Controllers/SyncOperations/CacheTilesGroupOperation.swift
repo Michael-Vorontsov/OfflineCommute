@@ -8,7 +8,6 @@
 
 import UIKit
 
-//typealias Limits<T> = (min:T, max:T)
 struct Limits<T> {
   let min: T
   let max: T
@@ -29,7 +28,19 @@ class CacheTilesGroupOperation: GroupDataRetrievalOperation {
     super.init()
   }
   
-  public func prepareForRetrieval() throws {}
-  
+  override func prepareForRetrieval() throws {
+    var operations = [NSOperation]()
+    for zIndex in (constraints.x.min...constraints.x.max) {
+      let scale = (zIndex - constraints.z.min + 1) * 2
+      for xIndex in ((constraints.x.min - 1) * scale...(constraints.x.max + 1) * scale) {
+        for yIndex in ((constraints.x.min - 1) * scale...(constraints.x.max + 1) * scale) {
+          let operation = TilesCacheDataRetrievalOperation(x: xIndex, y: yIndex, z:zIndex)
+          operations.append(operation)
+        }
+      }
+    }
+    self.operations = operations
+    try super.prepareForRetrieval()
+  }
 
 }

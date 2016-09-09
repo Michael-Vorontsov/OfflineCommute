@@ -102,9 +102,6 @@ class StationsListViewController: LocalizableViewController, NSFetchedResultsCon
   }()
 }
 
-
-
-
 // MARK: -Overrides
 
 extension StationsListViewController {
@@ -112,9 +109,6 @@ extension StationsListViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-//    setupMapView()
-//
-    
   }
   
   override func viewWillAppear(animated: Bool) {
@@ -258,8 +252,6 @@ extension StationsListViewController:UISearchBarDelegate {
       guard success, let firstPlacemark = results.first as? CLPlacemark, let coordinate = firstPlacemark.location?.coordinate  else {
         return
       }
-      
-//      guardSelf.mapView.setUserTrackingMode(.None, animated: false)
       
       let annotation = MKPointAnnotation()
       annotation.coordinate = coordinate

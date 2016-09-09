@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8C7E9DE3C9851CBFC76CBFAC /* Pods_OfflineCommute.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8604B4E3CB739DE246A3349E /* Pods_OfflineCommute.framework */; };
+		D03E87B61D6AF19C000504C0 /* CacheTilesGroupOperationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03E87B51D6AF19C000504C0 /* CacheTilesGroupOperationTests.swift */; };
 		D077580E1D475EEC004F6265 /* RouteTrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D077580D1D475EEC004F6265 /* RouteTrackingViewController.swift */; };
 		D07758111D476038004F6265 /* UIViewController+MapViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07758101D476038004F6265 /* UIViewController+MapViewContainer.swift */; };
 		D0AB01631D48C9EB002A67A5 /* TilesCacheDataRetrievalOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AB01621D48C9EB002A67A5 /* TilesCacheDataRetrievalOperation.swift */; };
@@ -80,6 +81,7 @@
 		0E6C959A2CCB11AC82EB09B6 /* Pods-OfflineCommute.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OfflineCommute.release.xcconfig"; path = "Pods/Target Support Files/Pods-OfflineCommute/Pods-OfflineCommute.release.xcconfig"; sourceTree = "<group>"; };
 		8604B4E3CB739DE246A3349E /* Pods_OfflineCommute.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OfflineCommute.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A735EC79848B1F82B338A253 /* Pods-OfflineCommute.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OfflineCommute.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OfflineCommute/Pods-OfflineCommute.debug.xcconfig"; sourceTree = "<group>"; };
+		D03E87B51D6AF19C000504C0 /* CacheTilesGroupOperationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheTilesGroupOperationTests.swift; sourceTree = "<group>"; };
 		D077580D1D475EEC004F6265 /* RouteTrackingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteTrackingViewController.swift; sourceTree = "<group>"; };
 		D07758101D476038004F6265 /* UIViewController+MapViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+MapViewContainer.swift"; sourceTree = "<group>"; };
 		D0AB01621D48C9EB002A67A5 /* TilesCacheDataRetrievalOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TilesCacheDataRetrievalOperation.swift; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 			children = (
 				D0C03DC11C81E59000EF9A95 /* OfflineCommuteTests.swift */,
 				D0C03DC31C81E59000EF9A95 /* Info.plist */,
+				D03E87B51D6AF19C000504C0 /* CacheTilesGroupOperationTests.swift */,
 			);
 			path = OfflineCommuteTests;
 			sourceTree = "<group>";
@@ -731,6 +734,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D03E87B61D6AF19C000504C0 /* CacheTilesGroupOperationTests.swift in Sources */,
 				D0C03DC21C81E59000EF9A95 /* OfflineCommuteTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
