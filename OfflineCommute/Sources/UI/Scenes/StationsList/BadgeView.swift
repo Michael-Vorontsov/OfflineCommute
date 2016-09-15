@@ -17,9 +17,9 @@ class BadgeAnnotationView: MKAnnotationView {
     return badgeView
   }()
   
-  override init(frame: CGRect) {
-    super.init(frame: frame)
-  }
+//  override init(frame: CGRect) {
+//    super.init(frame: frame)
+//  }
   
   override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
     super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)

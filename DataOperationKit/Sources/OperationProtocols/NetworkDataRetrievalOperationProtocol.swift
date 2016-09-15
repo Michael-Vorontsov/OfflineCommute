@@ -1,6 +1,6 @@
 //
 //  NetworkDataRetrievalOperationProtocol.swift
-//  SwiftWeather
+//  DataOperationKit
 //
 //  Created by Mykhailo Vorontsov on 08/04/2016.
 //  Copyright © 2016 Mykhailo Vorontsov. All rights reserved.
@@ -42,8 +42,8 @@ public protocol NetworkDataRetrievalOperationProtocol: DataRetrievalOperationPro
   var requestEndPoint: String? {get set}
   var requestPath: String? {get set}
   
-  var requestParameters: [String : AnyObject] {get set}
-  var requestHeaders: [String : String] {get set}
+  var requestParameters: [String : AnyObject]! {get set}
+  var requestHeaders: [String : AnyObject]! {get set}
   
   var requestMethod: NetworkRequestMethod {get set}
   var requestParametersEncoding: NetworkParameterEncoding {get set}

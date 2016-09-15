@@ -1,6 +1,6 @@
 //
 //  NetworkDataRetrievalOperation.swift
-//  SwiftWeather
+//  DataOperationKit
 //
 //  Created by Mykhailo Vorontsov on 29/03/2016.
 //  Copyright © 2016 Mykhailo Vorontsov. All rights reserved.
@@ -31,8 +31,13 @@ public class NetworkDataRetrievalOperation: DataRetrievalOperation, NetworkDataR
   public var requestMethod: NetworkRequestMethod = .GET
   public var requestParametersEncoding: NetworkParameterEncoding = .JSON
   
-  public lazy var requestParameters: [String : AnyObject] = {return [String : AnyObject]()}()
-  public lazy var requestHeaders: [String : String] = {return [String : String]()}()
+  public lazy var requestParameters: [String : AnyObject]! = {
+    return [String : AnyObject]()
+  }()
+  
+  public lazy var requestHeaders: [String : AnyObject]! = {
+    return [String : AnyObject]()
+  }()
   
 
   public var response: NSURLResponse? = nil
@@ -66,7 +71,7 @@ public class NetworkDataRetrievalOperation: DataRetrievalOperation, NetworkDataR
     }
     // Add path if any
     if let path = requestPath {
-      url = url.URLByAppendingPathComponent(path)
+      url = url.URLByAppendingPathComponent(path)!
     }
     
     let method = requestMethod
@@ -85,9 +90,15 @@ public class NetworkDataRetrievalOperation: DataRetrievalOperation, NetworkDataR
     //MARK: Construct request
     let theRequest = NSMutableURLRequest(URL:url)
     theRequest.HTTPMethod = method.rawValue
-    var headers = requestHeaders ?? [String : String]()
+    
+//    var headers = requestHeaders
+    var headers = [String : AnyObject]()
+    requestHeaders = headers
     headers[Consts.headerContentTypeKey] = requestParametersEncoding.rawValue
     for (key, value) in headers {
+      guard let value = value as? String else {
+        continue
+      }
       theRequest.addValue(value, forHTTPHeaderField: key)
     }
     

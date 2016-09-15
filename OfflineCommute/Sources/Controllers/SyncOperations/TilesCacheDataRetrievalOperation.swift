@@ -36,7 +36,7 @@ class TilesCacheDataRetrievalOperation: NetworkDataRetrievalOperation {
     let fileName = requestEndPoint!.stringByReplacingOccurrencesOfString("/", withString: "|")
     let directoryLocation = downloadLocation ?? NSFileManager.applicationCachesDirectory
     let cacheFilePath = directoryLocation.URLByAppendingPathComponent(fileName)
-    data.writeToURL(cacheFilePath, atomically: true)
+    data.writeToURL(cacheFilePath!, atomically: true)
     
   }
   

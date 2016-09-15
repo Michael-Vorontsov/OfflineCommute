@@ -29,14 +29,14 @@ class OCCachableTileOverlay: MKTileOverlay {
     //    }
     
     var pathToFile = self.URLForTilePath(path).absoluteString
-    pathToFile = pathToFile.stringByReplacingOccurrencesOfString("/", withString: "|")
-    if let cachedData = self.loadFileWithName(pathToFile as String) {
+    pathToFile = pathToFile!.stringByReplacingOccurrencesOfString("/", withString: "|")
+    if let cachedData = self.loadFileWithName(pathToFile! as String) {
       result(cachedData, nil)
     }
     
     let task = session.dataTaskWithURL(self.URLForTilePath(path)) { (data, response, error) in
       if let data = data {
-        self.saveFileWithName(pathToFile, imageData: data)
+        self.saveFileWithName(pathToFile!, imageData: data)
       }
       result(data, error)
     }
@@ -46,7 +46,7 @@ class OCCachableTileOverlay: MKTileOverlay {
   
   func pathToImage(imageName:String) -> NSURL {
     let imageFile = directoryPath.URLByAppendingPathComponent(imageName)
-    return imageFile
+    return imageFile!
   }
   
   func loadFileWithName(fileName:String) -> NSData? {

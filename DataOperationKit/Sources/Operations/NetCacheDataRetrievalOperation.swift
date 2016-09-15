@@ -26,7 +26,7 @@ public class NetCacheDataRetrievalOperation: NetworkDataRetrievalOperation, NetC
       let cacheDirectory = NSFileManager.applicationCachesDirectory
       let fileURL = cacheDirectory.URLByAppendingPathComponent(cacheName)
       cacheURL = fileURL
-      if let content = NSData(contentsOfURL: fileURL) {
+      if let content = NSData(contentsOfURL: fileURL!) {
         data = content
         shouldRequestFromNetwork = false
       }
